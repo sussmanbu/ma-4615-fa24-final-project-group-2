@@ -1,4 +1,4 @@
-project:
+project: group 2
   type: website
   execute-dir: project
   resources: scripts
