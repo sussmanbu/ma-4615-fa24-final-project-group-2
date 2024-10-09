@@ -1,6 +1,6 @@
 ---
 title: "About"
-# image: profile.jpg
+  image: profile.jpg
   about:
   template: jolla
   links:
@@ -37,6 +37,8 @@ Jason is a Senior undergrad in Computer Science/Statistics from New York.
 ## Song
 
 Song is a Senior undergrad major in Applied Math from China
+
+
 
 
 ### About this Template.
