@@ -27,3 +27,14 @@ You can add options to executable code like this
 The `echo: false` option disables the printing of code (only output is displayed).
 
 Here is what the first post will look like
+
+Data set 1:
+
+```{r}
+library(readr)
+traffic_stops <- read_csv("/Users/katrina_1022/Downloads/Traffic stops in Rhode Island.csv")
+```
+
+Link to dataset: <https://www.kaggle.com/datasets/mustafaadelibrahim/traffic-stops-in-rhode-islandpolicing-activities?resource=download>
+
+The dataset of traffic stops by police officers was collected by the Stanford Open Policing Project. It has 15 columns and 91741 rows. Through using this data, we hope to investigate if the driver's race is correlated with the amount and severity of the stop. Therefore in terms of data cleaning, we might focus on the variables driver_race, search_conducted, stop_outcome, stop_duration, and is_arrested.
