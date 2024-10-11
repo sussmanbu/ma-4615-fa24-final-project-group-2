@@ -1,10 +1,10 @@
-project: group 2
+project:
   type: website
   execute-dir: project
   resources: scripts
 
 website:
-  title: "MA [46]15 Final Project"
+  title: "Group 2 MA [46]15 Final Project"
   navbar:
     right:
       - about.qmd
