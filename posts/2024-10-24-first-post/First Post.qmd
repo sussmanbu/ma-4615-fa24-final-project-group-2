@@ -7,7 +7,7 @@ editor: visual
 
 Data set 1:
 
-```{r}
+```{r eval=FALSE}
 library(readr)
 traffic_stops <- read_csv("/Users/katrina_1022/Downloads/Traffic stops in Rhode Island.csv")
 ```
@@ -20,4 +20,12 @@ Data set 2
 
 Link to data set: <https://catalog.data.gov/dataset/alzheimers-disease-and-healthy-aging-data/resource/b2443e45-68aa-4004-b97a-e62c4c28502f> 
 
-The Alzheimer's data set includes 284142 rows by 31 columns. The data set reports the number of people of certain age groups and races that were observed to have Alzheimer’s within a specified period of time, and records other information such as health condition and medical history. With this data set, we can study a potential racial disparity in the number of people that suffer from Alzheimer’s. The data set is sourced from the Department of Health and Human Services, and was published by the Center for Disease Control and Prevention. The data was collected over the period of 2015 to 2022. The data can be easily loaded as it is stored simply in a CSV file. Some cleaning may be necessary as there are many variables that may be extraneous to our study, such as geographic location. In addition, there are many rows where some data entries are missing, and they will have to be cleaned out.
+The Alzheimer's data set includes 284142 rows by 31 columns. The data set reports the number of people of certain age groups and races that were observed to have Alzheimer's within a specified period of time, and records other information such as health condition and medical history. With this data set, we can study a potential racial disparity in the number of people that suffer from Alzheimer's. The data set is sourced from the Department of Health and Human Services, and was published by the Center for Disease Control and Prevention. The data was collected over the period of 2015 to 2022. The data can be easily loaded as it is stored simply in a CSV file. Some cleaning may be necessary as there are many variables that may be extraneous to our study, such as geographic location. In addition, there are many rows where some data entries are missing, and they will have to be cleaned out.
+
+Data set 3
+
+Covid-19 Case Surveillance Public Use Dataset
+
+<https://www.kaggle.com/datasets/arashnic/covid19-case-surveillance-public-use-dataset>
+
+The COVID-19 case surveillance system database includes individual-level data reported to U.S. states and autonomous reporting entities, including New York City and the District of Columbia (D.C.), as well as U.S. territories and states. On April 5, 2020, COVID-19 was added to the Nationally Notifiable Condition List and classified as \"immediately notifiable, urgent (within 24 hours)\" by a Council of State and Territorial Epidemiologists (CSTE) Interim Position Statement (Interim-20-ID-01). CSTE updated the position statement on August 5, 2020 to clarify the interpretation of antigen detection tests and serologic test results within the case classification. Through comparing (hosp_yn, icu_yn, death_yn) in different racial groups, we are trying to analyze any disparities or variations. There are also many rows where some data entries are missing, and we will work to clean them out.
