@@ -6,11 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Daniel Sussman">
-<meta name="dcterms.date" content="2024-02-23">
-<meta name="description" content="Directions to set up your website and create your first post.">
+<meta name="author" content="Group 2">
 
-<title>Group 2 MA [46]15 Final Project - Getting started</title>
+<title>Group 2 MA [46]15 Final Project - First Post</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -118,13 +150,8 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Getting started</h1>
-                  <div>
-        <div class="description">
-          <p>Directions to set up your website and create your first post.</p>
-        </div>
-      </div>
-                </div>
+      <h1 class="title">First Post</h1>
+                      </div>
   </div>
     
   
@@ -133,23 +160,11 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Daniel Sussman </p>
+               <p>Group 2 </p>
             </div>
     </div>
       
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">February 23, 2024</p>
-      </div>
-    </div>
     
-      <div>
-      <div class="quarto-title-meta-heading">Modified</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date-modified">February 23, 2024</p>
-      </div>
-    </div>
       
     </div>
     
@@ -165,54 +180,22 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Below, the items marked with <strong>[[OP]]</strong> should only be done by one person on the team.</p>
-<section id="to-get-started" class="level3">
-<h3 class="anchored" data-anchor-id="to-get-started">To get started</h3>
-<ol type="1">
-<li><strong>[[OP]]</strong> One person from the team should click the Github Classroom link on Teams.</li>
-<li><strong>[[OP]]</strong> That person types in the group name for their group.</li>
-<li>The rest of the team now clicks the Github Classroom link and selects their team from the dropdown list.</li>
-<li>Finally, each of you can clone the repository to your laptop like a normal assignment.</li>
-</ol>
-</section>
-<section id="setting-up-the-site" class="level3">
-<h3 class="anchored" data-anchor-id="setting-up-the-site">Setting up the site</h3>
-<ol type="1">
-<li><strong>[[OP]]</strong> Open the terminal and run <code>quarto publish gh-pages</code>.</li>
-<li><strong>[[OP]]</strong> Select <code>Yes</code> to the prompt: <br> <code>? Publish site to https://sussmanbu.github.io/ma4615-fa23-final-project-TEAMNAME/ using gh-pages? (Y/n)</code></li>
-<li><strong>[[OP]]</strong> Wait for the process to finish.</li>
-<li>Once it is done, you can go to the URL it asked you about to see your site.</li>
-</ol>
-<p><strong>Note</strong>: This is the process you will use every time you want to update your published site. Make sure to always follow the steps below for rendering, previewing, and committing your changes before doing these publish steps. Anyone can publish in the future.</p>
-</section>
-<section id="customize-your-site" class="level3">
-<h3 class="anchored" data-anchor-id="customize-your-site">Customize your site</h3>
-<ol type="1">
-<li><strong>[[OP]]</strong> Open the <code>_quarto.yml</code> file and update the title to include your team name.</li>
-<li><strong>[[OP]]</strong> Go to the <code>about.qmd</code> and remove the TF’s and professor’s names.</li>
-<li>add your own along with a short introduction and a link to your Github user page.</li>
-<li><strong>[[OP]]</strong> Render the site.</li>
-<li><strong>[[OP]]</strong> Check and make sure you didn’t get any errors.</li>
-<li><strong>[[OP]]</strong> Commit your changes and push.</li>
-<li><strong>[[OP]]</strong> Repeat the steps under Setting up your site.</li>
-</ol>
-<p>Once one person is done with this, each teammate in the group can, in turn, repeat steps 3-7. Before doing so, make sure to <code>pull</code> the changes from teammates before starting to make new changes. (We’ll talk soon about ways to organize your work and resolve conflicts.)</p>
-</section>
-<section id="start-your-first-post" class="level3">
-<h3 class="anchored" data-anchor-id="start-your-first-post">Start your first post</h3>
-<ol type="1">
-<li>To start your first post first, run <code>remotes::install_github("sussmanbu/quartopost")</code> in your Console.</li>
-<li><strong>[[OP]]</strong> Run <code>quartopost::quartopost()</code> (or click Addins-&gt;Create Quarto Post, or use C-Shift-P, type “Create Quarto” and press enter to run the command).</li>
-</ol>
-<p>Now you can start working on your post. You’ll want to render your post to see what it will look like on the site.</p>
-<ul>
-<li>Every time you want to <strong>make a new post</strong>, you can repeat step 2 above.</li>
-<li>When you want to <strong>publish your progress</strong>, follow steps 4-7 from Customize your site.</li>
-</ul>
-<p>Finally, make sure to read through everything on <a href="https://sussmanbu.github.io/ma4615-final-project-quarto">this site</a> which has the directions and rubric for the final project.</p>
+<p>#Data set 1:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>traffic_stops <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"/Users/katrina_1022/Downloads/Traffic stops in Rhode Island.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Link to dataset: <a href="https://www.kaggle.com/datasets/mustafaadelibrahim/traffic-stops-in-rhode-islandpolicing-activities?resource=download" class="uri">https://www.kaggle.com/datasets/mustafaadelibrahim/traffic-stops-in-rhode-islandpolicing-activities?resource=download</a></p>
+<p>The dataset of traffic stops by police officers was collected by the Stanford Open Policing Project. It has 15 columns and 91741 rows. Through using this data, we hope to investigate if the driver’s race is correlated with the amount and severity of the stop. Therefore in terms of data cleaning, we might focus on the variables driver_race, search_conducted, stop_outcome, stop_duration, and is_arrested.</p>
+<p>#Data set 2</p>
+<p>Link to data set: <a href="https://catalog.data.gov/dataset/alzheimers-disease-and-healthy-aging-data/resource/b2443e45-68aa-4004-b97a-e62c4c28502f" class="uri">https://catalog.data.gov/dataset/alzheimers-disease-and-healthy-aging-data/resource/b2443e45-68aa-4004-b97a-e62c4c28502f</a></p>
+<p>The Alzheimer’s data set includes 284142 rows by 31 columns. The data set reports the number of people of certain age groups and races that were observed to have Alzheimer’s within a specified period of time, and records other information such as health condition and medical history. With this data set, we can study a potential racial disparity in the number of people that suffer from Alzheimer’s. The data set is sourced from the Department of Health and Human Services, and was published by the Center for Disease Control and Prevention. The data was collected over the period of 2015 to 2022. The data can be easily loaded as it is stored simply in a CSV file. Some cleaning may be necessary as there are many variables that may be extraneous to our study, such as geographic location. In addition, there are many rows where some data entries are missing, and they will have to be cleaned out.</p>
+<p>#Data set 3</p>
+<p>Covid-19 Case Surveillance Public Use Dataset</p>
+<p><a href="https://www.kaggle.com/datasets/arashnic/covid19-case-surveillance-public-use-dataset" class="uri">https://www.kaggle.com/datasets/arashnic/covid19-case-surveillance-public-use-dataset</a></p>
+<p>The COVID-19 case surveillance system database includes individual-level data reported to U.S. states and autonomous reporting entities, including New York City and the District of Columbia (D.C.), as well as U.S. territories and states. On April 5, 2020, COVID-19 was added to the Nationally Notifiable Condition List and classified as "immediately notifiable, urgent (within 24 hours)" by a Council of State and Territorial Epidemiologists (CSTE) Interim Position Statement (Interim-20-ID-01). CSTE updated the position statement on August 5, 2020 to clarify the interpretation of antigen detection tests and serologic test results within the case classification. Through comparing (hosp_yn, icu_yn, death_yn) in different racial groups, we are trying to analyze any disparities or variations. There are also many rows where some data entries are missing, and we will work to clean them out.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
