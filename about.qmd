@@ -1,7 +1,6 @@
 ---
 title: "About"
 image: profile.jpg
-template: jolla
 links:
   # - icon: twitter
   #   text: Twitter
