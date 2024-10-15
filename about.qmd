@@ -1,9 +1,7 @@
 ---
 title: "About"
-# image: profile.jpg
-about:
-  template: jolla
-  links:
+image: profile.jpg
+links:
     # - icon: twitter
     #   text: Twitter
     #   href: https://twitter.com
