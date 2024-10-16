@@ -40,6 +40,8 @@ Song is a Senior undergrad major in Applied Math from China
 
 Katrina is a Junior undergrad in Psychology/Statistics from Vancouver, Canada
 
+
+
 ### About this Template.
 
 This is based off of the standard Quarto website template from RStudio (2023.09.0 Build 463).
