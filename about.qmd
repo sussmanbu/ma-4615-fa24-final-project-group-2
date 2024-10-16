@@ -1,6 +1,7 @@
 ---
 title: "About"
 image: profile.jpg
+template: jolla
 links:
   # - icon: twitter
   #   text: Twitter
@@ -32,13 +33,15 @@ Sindhuja is Senior undergrad in Data Science from Pittsburgh, PA.
 
 Jason is a Senior undergrad in Computer Science/Statistics from New York.
 
-## Shiqin Song
+## Song
 
 Song is a Senior undergrad major in Applied Math from China
 
 ## Katrina Deng
 
 Katrina is a Junior undergrad in Psychology/Statistics from Vancouver, Canada
+
+
 
 ### About this Template.
 
