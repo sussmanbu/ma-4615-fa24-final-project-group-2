@@ -4,10 +4,25 @@
 
 library(tidyverse)
 
-loan_data <- read_csv(here::here("dataset", "loan_refusal.csv"))
+traffic_data <- read_csv(here::here("dataset", "Traffic stops in Rhode Island.csv"))
 
-## CLEAN the data
-loan_data_clean <- loan_data |>
-  pivot_longer(2:5, names_to = "group", values_to = "refusal_rate")
+library(dplyr)
 
-write_rds(loan_data_clean, file = here::here("dataset", "loan_refusal_clean.rds"))
+traffic_data_cleaned <- traffic_data %>%
+  filter(!is.na(driver_race) & 
+           !is.na(driver_gender) & 
+           !is.na(violation_raw) & 
+           !is.na(violation) & 
+           !is.na(search_conducted) & 
+           !is.na(stop_outcome) & 
+           !is.na(stop_duration) & 
+           !is.na(drugs_related_stop)) %>%
+  select(-state, -county_name)
+
+traffic_data_cleaned
+         
+
+  
+  
+
+
