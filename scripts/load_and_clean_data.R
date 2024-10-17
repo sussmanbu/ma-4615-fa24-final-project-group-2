@@ -2,12 +2,16 @@
 # Note, you may end up creating more than one cleaned data set and saving that
 # to separate files in order to work on different aspects of your project
 
+# Load packages
 library(tidyverse)
-
-traffic_data <- read_csv(here::here("dataset", "Traffic stops in Rhode Island.csv"))
-
 library(dplyr)
 
+
+# Load data
+traffic_data <- read_csv(here::here("dataset", "Traffic stops in Rhode Island.csv"))
+
+
+# Clean data
 traffic_data_cleaned <- traffic_data %>%
   filter(!is.na(driver_race) & 
            !is.na(driver_gender) & 
@@ -19,10 +23,7 @@ traffic_data_cleaned <- traffic_data %>%
            !is.na(drugs_related_stop)) %>%
   select(-state, -county_name)
 
-traffic_data_cleaned
-         
 
-  
-  
-
-
+# Save cleaned data as an .rds file
+# How to call data later: cleaned_data <- read_rds(here::here("dataset", "cleaned_dataset.rds"))
+saveRDS(traffic_data_cleaned, here::here("dataset", "cleaned_dataset.rds"))
