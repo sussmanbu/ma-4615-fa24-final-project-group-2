@@ -6,10 +6,8 @@
 library(tidyverse)
 library(dplyr)
 
-
 # Load data
 traffic_data <- read_csv(here::here("dataset", "Traffic stops in Rhode Island.csv"))
-
 
 # Clean data
 traffic_data_cleaned <- traffic_data %>%
@@ -22,7 +20,6 @@ traffic_data_cleaned <- traffic_data %>%
            !is.na(stop_duration) & 
            !is.na(drugs_related_stop)) %>%
   select(-state, -county_name)
-
 
 # Change stop_time to numeric
 traffic_data_cleaned$stop_time <- as.numeric(traffic_data_cleaned$stop_time)
@@ -39,7 +36,6 @@ secs_to_time_of_day <- function(seconds) {
 
 # Apply conversion function
 traffic_data_cleaned$stop_time <- sapply(traffic_data_cleaned$stop_time, secs_to_time_of_day)
-
 
 # Save cleaned data as an .rds file
 # How to call data later: cleaned_data <- read_rds(here::here("dataset", "cleaned_dataset.rds"))
