@@ -1,0 +1,29 @@
+---
+title: "Second Post"
+author: "Group 2"
+editor: visual
+description: 
+"This post details our dataset seleciton and data cleaning"
+date: "2024-10-18"
+---
+
+During the second week, we decided to use our first dataset for the final project–The Rhode Island traffic stop dataset. We believe that this dataset will allow us to investigate most effectively certain racial disparities that may exist in traffic law enforcement. The dataset is sourced from Kaggle 
+
+Research questions to consider with this dataset:
+
+-   Does race impact the duration of stop and the extent of search?
+
+```{=html}
+<!-- -->
+```
+-   What is the most common reason for stops?
+
+-   Does the proportion of drug-related stops to total stops vary significantly between races? 
+
+-   Is there a correlation between race and stop_outcome = arrest?
+
+-   What is the distribution of stops in districts in terms of race?
+
+-   What is the probability a search is conducted depending on the race?
+
+-   Controlling for stop date, gender, and district, what’s the correlation between race and arrest?
