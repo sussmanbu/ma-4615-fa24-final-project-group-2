@@ -12,18 +12,11 @@ During the second week, we decided to use our first dataset for the final projec
 Research questions to consider with this dataset:
 
 -   Does race impact the duration of stop and the extent of search?
-
-```{=html}
-<!-- -->
-```
 -   What is the most common reason for stops?
-
 -   Does the proportion of drug-related stops to total stops vary significantly between races? 
-
 -   Is there a correlation between race and stop_outcome = arrest?
-
 -   What is the distribution of stops in districts in terms of race?
-
 -   What is the probability a search is conducted depending on the race?
-
 -   Controlling for stop date, gender, and district, what’s the correlation between race and arrest?
+
+We also did some basic data cleaning, which involves uploading the data, taking out empty rows, taking out the columns county name because all the data is null and state because the entire dataset is collected from Rhode Island. We also modified the stop time to make it show military time, making it easier to read. Here is the code for all the modification:
