@@ -2,12 +2,41 @@
 # Note, you may end up creating more than one cleaned data set and saving that
 # to separate files in order to work on different aspects of your project
 
+# Load packages
 library(tidyverse)
+library(dplyr)
 
-loan_data <- read_csv(here::here("dataset", "loan_refusal.csv"))
+# Load data
+traffic_data <- read_csv(here::here("dataset", "Traffic stops in Rhode Island.csv"))
 
-## CLEAN the data
-loan_data_clean <- loan_data |>
-  pivot_longer(2:5, names_to = "group", values_to = "refusal_rate")
+# Clean data
+traffic_data_cleaned <- traffic_data %>%
+  filter(!is.na(driver_race) & 
+           !is.na(driver_gender) & 
+           !is.na(violation_raw) & 
+           !is.na(violation) & 
+           !is.na(search_conducted) & 
+           !is.na(stop_outcome) & 
+           !is.na(stop_duration) & 
+           !is.na(drugs_related_stop)) %>%
+  select(-state, -county_name)
 
-write_rds(loan_data_clean, file = here::here("dataset", "loan_refusal_clean.rds"))
+# Change stop_time to numeric
+traffic_data_cleaned$stop_time <- as.numeric(traffic_data_cleaned$stop_time)
+
+
+# Function to convert sec to time of day
+secs_to_time_of_day <- function(seconds) {
+  hours <- (seconds %/% 3600) %% 24
+  minutes <- (seconds %/% 60) %% 60
+  secs <- seconds %% 60
+  sprintf("%02d:%02d:%02d", hours, minutes, secs)
+}
+
+
+# Apply conversion function
+traffic_data_cleaned$stop_time <- sapply(traffic_data_cleaned$stop_time, secs_to_time_of_day)
+
+# Save cleaned data as an .rds file
+# How to call data later: cleaned_data <- read_rds(here::here("dataset", "cleaned_dataset.rds"))
+saveRDS(traffic_data_cleaned, here::here("dataset", "cleaned_dataset.rds"))
