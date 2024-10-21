@@ -2,8 +2,7 @@
 title: "Second Post"
 author: "Group 2"
 editor: visual
-description: 
-"This post details our dataset seleciton and data cleaning"
+description: "This post details our dataset seleciton and data cleaning"
 date: "2024-10-18"
 ---
 
