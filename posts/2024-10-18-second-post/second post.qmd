@@ -6,7 +6,7 @@ description: "This post details our dataset seleciton and data cleaning"
 date: "2024-10-18"
 ---
 
-During the second week, we decided to use our first dataset for the final project–The Rhode Island traffic stop dataset. We believe that this dataset will allow us to investigate most effectively certain racial disparities that may exist in traffic law enforcement. The dataset is sourced from Kaggle, and was collected by the Standford Open Police Project to investigate policing patterns.
+During the second week, we decided to use our first dataset for the final project--The Rhode Island traffic stop dataset. We believe that this dataset will allow us to investigate most effectively certain racial disparities that may exist in traffic law enforcement. The dataset is sourced from Kaggle, and was collected by the Standford Open Police Project to investigate policing patterns.
 
 Research questions to consider with this dataset:
 
@@ -16,9 +16,9 @@ Research questions to consider with this dataset:
 -   Is there a correlation between race and stop_outcome = arrest?
 -   What is the distribution of stops in districts in terms of race?
 -   What is the probability a search is conducted depending on the race?
--   Controlling for stop date, gender, and district, what’s the correlation between race and arrest?
+-   Controlling for stop date, gender, and district, what's the correlation between race and arrest?
 
-We also did some basic data cleaning, which involves uploading the data, taking out empty rows, taking out the columns county name because all the data is null and state because the entire dataset is collected from Rhode Island. We also modified the stop time to make it show military time, making it easier to read. Here is the code for all the modification:
+We also did some basic data cleaning, which involves uploading the data and taking out empty rows. We also removed the county and state column because the county values were all null and the entire dataset is collected from Rhode Island. We also modified the stop_time variable to the actual time of day, instead of seconds into the day, making it easier to read. Here is the code for all the modification:
 
 ```{r}
 # Load packages
