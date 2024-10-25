@@ -2,8 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/2024-10-24-first-post/First Post.html",
+      "/posts/2024-10-25-third-post/third post.html",
       "/posts/2024-10-18-second-post/second post.html",
+      "/posts/2024-10-24-first-post/First Post.html",
       "/posts/2023-12-20-examples/examples.html",
       "/posts/2023-10-15-getting-started/getting-started.html",
       "/posts/2023-10-13-first-team-meeting/first-team-meeting.html"
