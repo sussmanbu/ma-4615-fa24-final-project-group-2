@@ -5,7 +5,7 @@ toc: true
 draft: false
 ---
 
-![](images/data-import-cheatsheet-thumbs.png)
+![](images/dataset-cover.png)
 
 
 This comes from the file `data.qmd`.
@@ -77,7 +77,7 @@ You will
   * If you have many variables then only describe the most relevant ones and summarize the rest.
 * Describe any cleaning you had to do for your data.
   * You *must* include a link to your `load_and_clean_data.R` file.
-  * Rrename variables and recode factors to make data more clear.
+  * Rename variables and recode factors to make data more clear.
   * Also, describe any additional R packages you used outside of those covered in class.
   * Describe and show code for how you combined multiple data files and any cleaning that was necessary for that.
   * Some repetition of what you do in your `load_and_clean_data.R` file is fine and encouraged if it helps explain what you did.
@@ -85,14 +85,18 @@ You will
   * Make sure to remove excessive warnings, use clean easy-to-read code (without side scrolling), organize with sections, use bullets and other organization tools, etc.
   * This page should be self-contained.
   
+For this study, we will be looking at traffic stop data from Rhode Island to look for trends traffic policing across different races.
 
 The dataset we used can be found at https://www.kaggle.com/datasets/mustafaadelibrahim/traffic-stops-in-rhode-islandpolicing-activities?resource=download. The dataset on traffic stops in Rhode Island is part of a larger collection by the Stanford Open Policing Project. This project aims to collect and standardize data on vehicle and pedestrian stops across 31 U.S. states, gathering over 200 million records to promote transparency and accountability in policing. The data was curated by a team of researchers and journalists at Stanford University, blending statistical analysis with data journalism.
 
-The dataset had 15 variables: state, stop_date, stop_time, county_name, driver_gender, driver_race, violation_description, violation, search_conducted, search_type, stop_outcome, is_arrested, stop_duration, drugs_related_stop, and district. This data set only focused on Rhode Island so the state was irrelevant. Stop_date and stop_time stated the date and time of day that the traffic stop occurred. The county_name was an empty column. Driver_gender and driver_race detailed the gender and race of the driver who was stopped. The variable violation gave a general classification for the violation while violation_description gave a more detailed description of the reason for the traffic stop. Search_conducted (boolean), search_type, stop_outcome, is_arrested (boolean), stop_duration, drugs_related_stop (boolean) gave more details as to what occurred during the traffic stop which gives us a better idea for the severity of the traffic violation. 
+The dataset had 15 variables: state, stop_date, stop_time, county_name, driver_gender, driver_race, violation_description, violation, search_conducted, search_type, stop_outcome, is_arrested, stop_duration, drugs_related_stop, and district. This data set only focused on Rhode Island so the state was irrelevant. Stop_date and stop_time stated the date and time of day that the traffic stop occurred. The county_name was an empty column, so we simply removed it for our cleaned dataset. Driver_gender and driver_race detailed the gender and race of the driver who was stopped. The variable violation gave a general classification for the violation while violation_description gave a more detailed description of the reason for the traffic stop. Search_conducted (boolean), search_type, stop_outcome, is_arrested (boolean), stop_duration, drugs_related_stop (boolean) gave more details as to what occurred during the traffic stop which gives us a better idea for the severity of the traffic violation. 
 
-  
-  
+Each row in the dataset corresponds to a particular traffic stop incident, and records data for the traffic stop according to the variables listed above. Our data cleaning, visualization, and initial analysis will be as follows:
+
+
+To clean the dataset for analysis, our first step was to remove all rows that are missing values for our vairables of focus:
 ```{r eval = FALSE}
+# Removing empty rows from the dataset
 traffic_data_cleaned <- traffic_data %>%
   filter(!is.na(driver_race) & 
          !is.na(driver_gender) & 
@@ -102,7 +106,10 @@ traffic_data_cleaned <- traffic_data %>%
          !is.na(stop_outcome) & 
          !is.na(stop_duration) & 
          !is.na(drugs_related_stop))
+```
 
+Next, we converted the `stop_time` variable, which was previously recorded as the number of seconds past 12:00am at which the stop occured, into a more readable format. To do this, we simpy apply a function which will convert seconds into the form hour:minute:second in military time.
+```{r eval = FALSE}
 traffic_data_cleaned$stop_time <- as.numeric(traffic_data_cleaned$stop_time)
 
 # Function to convert sec to time of day
@@ -115,7 +122,10 @@ secs_to_time_of_day <- function(seconds) {
 
 # Apply conversion function 
 traffic_data_cleaned$stop_time <- sapply(traffic_data_cleaned$stop_time, secs_to_time_of_day)
+```
 
+The following graphs and tables show a brief visual summary of the distribution of traffic stops across race. Although we can see that the distribution may be skewed by the population proportions for each race, we can see that whites are stopped most frequently, then blacks, then hispanics, then asians.
+```{r}
 ggplot(traffic_data_cleaned, aes(x = driver_race)) +
   geom_bar() +
   theme_minimal() +
