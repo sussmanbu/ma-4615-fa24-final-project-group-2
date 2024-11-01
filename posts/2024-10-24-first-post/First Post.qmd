@@ -3,6 +3,8 @@ title: "First Post"
 author: "Group 2"
 format: html
 editor: visual
+description: "This post details our research on potential datasets"
+date: "2024-10-11"
 ---
 
 #Data set 1:
@@ -24,8 +26,6 @@ The Alzheimer's data set includes 284142 rows by 31 columns. The data set report
 
 #Data set 3
 
-Covid-19 Case Surveillance Public Use Dataset
-
-<https://www.kaggle.com/datasets/arashnic/covid19-case-surveillance-public-use-dataset>
+Link to data set: <https://www.kaggle.com/datasets/arashnic/covid19-case-surveillance-public-use-dataset>
 
 The COVID-19 case surveillance system database includes individual-level data reported to U.S. states and autonomous reporting entities, including New York City and the District of Columbia (D.C.), as well as U.S. territories and states. On April 5, 2020, COVID-19 was added to the Nationally Notifiable Condition List and classified as "immediately notifiable, urgent (within 24 hours)" by a Council of State and Territorial Epidemiologists (CSTE) Interim Position Statement (Interim-20-ID-01). CSTE updated the position statement on August 5, 2020 to clarify the interpretation of antigen detection tests and serologic test results within the case classification. Through comparing (hosp_yn, icu_yn, death_yn) in different racial groups, we are trying to analyze any disparities or variations. There are also many rows where some data entries are missing, and we will work to clean them out.
