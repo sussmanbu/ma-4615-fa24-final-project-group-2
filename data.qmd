@@ -5,7 +5,7 @@ toc: true
 draft: false
 ---
 
-![](images/data-import-cheatsheet-thumbs.png)
+![](images/dataset-cover.png)
 
 
 This comes from the file `data.qmd`.
@@ -84,3 +84,58 @@ You will
 * Organization, clarity, cleanliness of the page
   * Make sure to remove excessive warnings, use clean easy-to-read code (without side scrolling), organize with sections, use bullets and other organization tools, etc.
   * This page should be self-contained.
+  
+----Response start here----
+  
+  The dataset had 15 variables: state, stop_date, stop_time, county_name, driver_gender, driver_race, violation_description, violation, search_conducted, search_type, stop_outcome, is_arrested, stop_duration, drugs_related_stop, and district. This data set only focused on Rhode Island so the state was irrelevant. Stop_date and stop_time stated the date and time of day that the traffic stop occurred. The county_name was an empty column, so we simply removed it for our cleaned dataset. Driver_gender and driver_race detailed the gender and race of the driver who was stopped. The variable violation gave a general classification for the violation while violation_description gave a more detailed description of the reason for the traffic stop. Search_conducted (boolean), search_type, stop_outcome, is_arrested (boolean), stop_duration, drugs_related_stop (boolean) gave more details as to what occurred during the traffic stop which gives us a better idea for the severity of the traffic violation. 
+  
+  Each row in the dataset corresponds to a particular traffic stop incident, and records data for the traffic stop according to the variables listed above. Our data cleaning, visualization, and initial analysis will be as follows:
+
+To clean the dataset for analysis, our first step was to remove all rows that are missing values for our vairables of focus (the following is a chunk from load_and_clean_data.R):
+
+```{r eval = FALSE}
+# Removing empty rows from the dataset
+traffic_data %>%
+  filter(!is.na(driver_race) & 
+           !is.na(driver_gender) & 
+           !is.na(violation_raw) & 
+           !is.na(violation) & 
+           !is.na(search_conducted) & 
+           !is.na(stop_outcome) & 
+           !is.na(stop_duration) & 
+           !is.na(drugs_related_stop)) %>%
+  select(-state, -county_name)
+```
+
+Next, we converted the `stop_time` variable, which was previously recorded as the number of seconds past 12:00am at which the stop occured, into a more readable format. To do this, we simpy apply a function which will convert seconds into the form hour:minute:second in military time (can also be found inload_and_clean_data.R):
+
+```{r eval = FALSE}
+
+secs_to_time_of_day <- function(seconds) {
+  hours <- (seconds %/% 3600) %% 24
+  minutes <- (seconds %/% 60) %% 60
+  secs <- seconds %% 60
+  sprintf("%02d:%02d:%02d", hours, minutes, secs)
+}
+
+traffic_data_cleaned$stop_time <- as.numeric(traffic_data_cleaned$stop_time)
+# Function to convert sec to time of day
+traffic_data_cleaned$stop_time <- sapply(traffic_data_cleaned$stop_time, secs_to_time_of_day)
+```
+
+The following graphs and tables show a brief visual summary of the distribution of traffic stops across race. Although we can see that the distribution may be skewed by the population proportions for each race, we can see that whites are stopped most frequently, then blacks, then hispanics, then asians.
+
+```{r}
+source(
+  "scripts/eda_traffic_data.R",
+  echo = F  
+)
+```
+
+First, we will visualize the distribution of key variables (e.g., 'race')
+```{r}
+print(plot1)
+print(plot2)
+print(plot3)
+```
+Here, we can see stopped drivers are most frequently white, then black, then hispanic, then asian. Among each race, it seems citations are the most likeley outcome, then warning, then arrest. It seems the driver is arrested more frequently for Blacks and Hispanics then other races. In addition, the frequency of traffic stops over time seems roughly constnant, with a spike around 2013.

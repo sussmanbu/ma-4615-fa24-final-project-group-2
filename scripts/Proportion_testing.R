@@ -6,7 +6,7 @@ library(broom)
 
 traffic_data = readRDS("dataset/cleaned_dataset.rds")
 
-# Q1: is there a significant difference in the between the proportions
+# Q1: is there a significant difference between the proportions
 # of whites who are arrested for speeding
 # and blacks who are arrested for speeding
 
@@ -26,6 +26,6 @@ n2 = ps$n[2] # number of whites in the sample
 zcrit = qnorm(.05, lower.tail = F)
 SE = zcrit * sqrt(p1*(1-p1)/n1 + p2*(1-p2)/2)
 CI = c((p1 - p2) - SE, (p1 - p2) + SE)
-
-# There is not a significant difference
+CI
+# There is not a statistically significant difference
 
