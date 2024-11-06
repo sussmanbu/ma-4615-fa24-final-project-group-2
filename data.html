@@ -192,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><img src="images/data-import-cheatsheet-thumbs.png" class="img-fluid"></p>
+<p><img src="images/dataset-cover.png" class="img-fluid"></p>
 <p>This comes from the file <code>data.qmd</code>.</p>
 <p>Your first steps in this project will be to find data to work on.</p>
 <p>I recommend trying to find data that interests you and that you are knowledgeable about. A bad example would be if you have no interest in video games but your data set is about video games. I also recommend finding data that is related to current events, social justice, and other areas that have an impact.</p>
@@ -313,49 +313,116 @@ time (1): stop_time
 <li>This page should be self-contained.</li>
 </ul></li>
 </ul>
-<p>The dataset we used can be found at https://www.kaggle.com/datasets/mustafaadelibrahim/traffic-stops-in-rhode-islandpolicing-activities?resource=download. The dataset on traffic stops in Rhode Island is part of a larger collection by the Stanford Open Policing Project. This project aims to collect and standardize data on vehicle and pedestrian stops across 31 U.S. states, gathering over 200 million records to promote transparency and accountability in policing. The data was curated by a team of researchers and journalists at Stanford University, blending statistical analysis with data journalism.</p>
-<p>The dataset had 15 variables: state, stop_date, stop_time, county_name, driver_gender, driver_race, violation_description, violation, search_conducted, search_type, stop_outcome, is_arrested, stop_duration, drugs_related_stop, and district. This data set only focused on Rhode Island so the state was irrelevant. Stop_date and stop_time stated the date and time of day that the traffic stop occurred. The county_name was an empty column. Driver_gender and driver_race detailed the gender and race of the driver who was stopped. The variable violation gave a general classification for the violation while violation_description gave a more detailed description of the reason for the traffic stop. Search_conducted (boolean), search_type, stop_outcome, is_arrested (boolean), stop_duration, drugs_related_stop (boolean) gave more details as to what occurred during the traffic stop which gives us a better idea for the severity of the traffic violation.</p>
+<p>—-Response start here—-</p>
+<p>The dataset had 15 variables: state, stop_date, stop_time, county_name, driver_gender, driver_race, violation_description, violation, search_conducted, search_type, stop_outcome, is_arrested, stop_duration, drugs_related_stop, and district. This data set only focused on Rhode Island so the state was irrelevant. Stop_date and stop_time stated the date and time of day that the traffic stop occurred. The county_name was an empty column, so we simply removed it for our cleaned dataset. Driver_gender and driver_race detailed the gender and race of the driver who was stopped. The variable violation gave a general classification for the violation while violation_description gave a more detailed description of the reason for the traffic stop. Search_conducted (boolean), search_type, stop_outcome, is_arrested (boolean), stop_duration, drugs_related_stop (boolean) gave more details as to what occurred during the traffic stop which gives us a better idea for the severity of the traffic violation.</p>
+<p>Each row in the dataset corresponds to a particular traffic stop incident, and records data for the traffic stop according to the variables listed above. Our data cleaning, visualization, and initial analysis will be as follows:</p>
+<p>To clean the dataset for analysis, our first step was to remove all rows that are missing values for our vairables of focus (the following is a chunk from load_and_clean_data.R):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>traffic_data_cleaned <span class="ot">&lt;-</span> traffic_data <span class="sc">%&gt;%</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(driver_race) <span class="sc">&amp;</span> </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(driver_gender) <span class="sc">&amp;</span> </span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(violation_raw) <span class="sc">&amp;</span> </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(violation) <span class="sc">&amp;</span> </span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(search_conducted) <span class="sc">&amp;</span> </span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(stop_outcome) <span class="sc">&amp;</span> </span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(stop_duration) <span class="sc">&amp;</span> </span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(drugs_related_stop))</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>traffic_data_cleaned<span class="sc">$</span>stop_time <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(traffic_data_cleaned<span class="sc">$</span>stop_time)</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to convert sec to time of day</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>secs_to_time_of_day <span class="ot">&lt;-</span> <span class="cf">function</span>(seconds) {</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  hours <span class="ot">&lt;-</span> (seconds <span class="sc">%/%</span> <span class="dv">3600</span>) <span class="sc">%%</span> <span class="dv">24</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  minutes <span class="ot">&lt;-</span> (seconds <span class="sc">%/%</span> <span class="dv">60</span>) <span class="sc">%%</span> <span class="dv">60</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  secs <span class="ot">&lt;-</span> seconds <span class="sc">%%</span> <span class="dv">60</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sprintf</span>(<span class="st">"%02d:%02d:%02d"</span>, hours, minutes, secs)</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply conversion function </span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>traffic_data_cleaned<span class="sc">$</span>stop_time <span class="ot">&lt;-</span> <span class="fu">sapply</span>(traffic_data_cleaned<span class="sc">$</span>stop_time, secs_to_time_of_day)</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(traffic_data_cleaned, <span class="fu">aes</span>(<span class="at">x =</span> driver_race)) <span class="sc">+</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Traffic Stops by Race"</span>, </span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Driver Race"</span>, </span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Count of Stops"</span>)</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>summary_table <span class="ot">&lt;-</span> traffic_data_cleaned <span class="sc">%&gt;%</span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(driver_race) <span class="sc">%&gt;%</span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">count =</span> <span class="fu">n</span>(),  <span class="co"># count of stops</span></span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>    <span class="at">percentage =</span> (<span class="fu">n</span>() <span class="sc">/</span> <span class="fu">nrow</span>(traffic_data_cleaned)) <span class="sc">*</span> <span class="dv">100</span>  <span class="co"># Percentage of total stops</span></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(count))</span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(summary_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Removing empty rows from the dataset</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>traffic_data <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(driver_race) <span class="sc">&amp;</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span><span class="fu">is.na</span>(driver_gender) <span class="sc">&amp;</span> </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span><span class="fu">is.na</span>(violation_raw) <span class="sc">&amp;</span> </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span><span class="fu">is.na</span>(violation) <span class="sc">&amp;</span> </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span><span class="fu">is.na</span>(search_conducted) <span class="sc">&amp;</span> </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span><span class="fu">is.na</span>(stop_outcome) <span class="sc">&amp;</span> </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span><span class="fu">is.na</span>(stop_duration) <span class="sc">&amp;</span> </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span><span class="fu">is.na</span>(drugs_related_stop)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>state, <span class="sc">-</span>county_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Next, we converted the <code>stop_time</code> variable, which was previously recorded as the number of seconds past 12:00am at which the stop occured, into a more readable format. To do this, we simpy apply a function which will convert seconds into the form hour:minute:second in military time (can also be found inload_and_clean_data.R):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>secs_to_time_of_day <span class="ot">&lt;-</span> <span class="cf">function</span>(seconds) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  hours <span class="ot">&lt;-</span> (seconds <span class="sc">%/%</span> <span class="dv">3600</span>) <span class="sc">%%</span> <span class="dv">24</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  minutes <span class="ot">&lt;-</span> (seconds <span class="sc">%/%</span> <span class="dv">60</span>) <span class="sc">%%</span> <span class="dv">60</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  secs <span class="ot">&lt;-</span> seconds <span class="sc">%%</span> <span class="dv">60</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sprintf</span>(<span class="st">"%02d:%02d:%02d"</span>, hours, minutes, secs)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>traffic_data_cleaned<span class="sc">$</span>stop_time <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(traffic_data_cleaned<span class="sc">$</span>stop_time)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to convert sec to time of day</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>traffic_data_cleaned<span class="sc">$</span>stop_time <span class="ot">&lt;-</span> <span class="fu">sapply</span>(traffic_data_cleaned<span class="sc">$</span>stop_time, secs_to_time_of_day)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The following graphs and tables show a brief visual summary of the distribution of traffic stops across race. Although we can see that the distribution may be skewed by the population proportions for each race, we can see that whites are stopped most frequently, then blacks, then hispanics, then asians.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"scripts/eda_traffic_data.R"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">echo =</span> F  </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [86,536 × 13] (S3: tbl_df/tbl/data.frame)
+ $ stop_date         : Date[1:86536], format: "2005-01-04" "2005-01-23" ...
+ $ stop_time         : chr [1:86536] "12:55:00" "23:15:00" "04:15:00" "17:15:00" ...
+ $ driver_gender     : chr [1:86536] "M" "M" "M" "M" ...
+ $ driver_race       : chr [1:86536] "White" "White" "White" "White" ...
+ $ violation_raw     : chr [1:86536] "Equipment/Inspection Violation" "Speeding" "Speeding" "Call for Service" ...
+ $ violation         : chr [1:86536] "Equipment" "Speeding" "Speeding" "Other" ...
+ $ search_conducted  : logi [1:86536] FALSE FALSE FALSE FALSE FALSE FALSE ...
+ $ search_type       : chr [1:86536] NA NA NA NA ...
+ $ stop_outcome      : chr [1:86536] "Citation" "Citation" "Citation" "Arrest Driver" ...
+ $ is_arrested       : logi [1:86536] FALSE FALSE FALSE TRUE FALSE FALSE ...
+ $ stop_duration     : chr [1:86536] "0-15 Min" "0-15 Min" "0-15 Min" "16-30 Min" ...
+ $ drugs_related_stop: logi [1:86536] FALSE FALSE FALSE FALSE FALSE FALSE ...
+ $ district          : chr [1:86536] "Zone X4" "Zone K3" "Zone X4" "Zone X1" ...
+NULL
+   stop_date           stop_time         driver_gender      driver_race       
+ Min.   :2005-01-04   Length:86536       Length:86536       Length:86536      
+ 1st Qu.:2008-01-05   Class :character   Class :character   Class :character  
+ Median :2010-11-11   Mode  :character   Mode  :character   Mode  :character  
+ Mean   :2010-10-05                                                           
+ 3rd Qu.:2013-05-11                                                           
+ Max.   :2015-12-31                                                           
+ violation_raw       violation         search_conducted search_type       
+ Length:86536       Length:86536       Mode :logical    Length:86536      
+ Class :character   Class :character   FALSE:83229      Class :character  
+ Mode  :character   Mode  :character   TRUE :3307       Mode  :character  
+                                                                          
+                                                                          
+                                                                          
+ stop_outcome       is_arrested     stop_duration      drugs_related_stop
+ Length:86536       Mode :logical   Length:86536       Mode :logical     
+ Class :character   FALSE:83458     Class :character   FALSE:85674       
+ Mode  :character   TRUE :3078      Mode  :character   TRUE :862         
+                                                                         
+                                                                         
+                                                                         
+   district        
+ Length:86536      
+ Class :character  
+ Mode  :character  
+                   
+                   
+                   </code></pre>
+</div>
+</div>
+<p>First, we will visualize the distribution of key variables (e.g., ‘race’)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(plot3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Here, we can see stopped drivers are most frequently white, then black, then hispanic, then asian. Among each race, it seems citations are the most likeley outcome, then warning, then arrest. It seems the driver is arrested more frequently for Blacks and Hispanics then other races. In addition, the frequency of traffic stops over time seems roughly constant, with a spike around 2013.</p>
 
 
 </section>

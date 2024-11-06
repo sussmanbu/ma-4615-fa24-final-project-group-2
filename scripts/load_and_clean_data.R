@@ -40,3 +40,5 @@ traffic_data_cleaned$stop_time <- sapply(traffic_data_cleaned$stop_time, secs_to
 # Save cleaned data as an .rds file
 # How to call data later: cleaned_data <- read_rds(here::here("dataset", "cleaned_dataset.rds"))
 saveRDS(traffic_data_cleaned, here::here("dataset", "cleaned_dataset.rds"))
+
+

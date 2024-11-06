@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Group 2">
-<meta name="dcterms.date" content="2024-10-18">
-<meta name="description" content="This post details our dataset seleciton and data cleaning">
+<meta name="dcterms.date" content="2024-11-04">
+<meta name="description" content="This post details our linear regression model">
 
-<title>Group 2 MA [46]15 Final Project - Second Post</title>
+<title>Group 2 MA [46]15 Final Project - Fourth Post</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,40 +22,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -152,10 +118,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Second Post</h1>
+      <h1 class="title">Fourth Post</h1>
                   <div>
         <div class="description">
-          This post details our dataset seleciton and data cleaning
+          This post details our linear regression model
         </div>
       </div>
                 </div>
@@ -174,7 +140,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">October 18, 2024</p>
+        <p class="date">November 4, 2024</p>
       </div>
     </div>
     
@@ -193,81 +159,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>During the second week, we decided to use our first dataset for the final project–The Rhode Island traffic stop dataset. We believe that this dataset will allow us to investigate most effectively certain racial disparities that may exist in traffic law enforcement. The dataset is sourced from Kaggle, and was collected by the Standford Open Police Project to investigate policing patterns.</p>
-<p>Research questions to consider with this dataset:</p>
+<p>During the fourth week, we were able to further explore the data to unlock new findings. We decided to conduct a general linear model test to understand the correlation between race and arrest while controlling for stop date, gender, and district.</p>
+<p><strong>Model Overview:</strong> The logistic regression model was built to investigate the correlation between several predictor variables and the likelihood of arrest during traffic stops. The predictors included driver race, stop date, driver gender, and district. The response variable (is_arrested) is binary, indicating whether an arrest occurred.</p>
+<p><strong>Model Formula:</strong> logit(P(is_arrested = 1)) = β0 + β1 (driver_race) + β2 (stop_date) + β3(driver_gender) + β4(district)</p>
+<p><img src="../../images/traffic-summary.png" class="img-fluid"></p>
+<p><strong>Findings:</strong> 1. Intercept: The negative coefficient of the intercept (-1.605) suggests that, when all other predictors are at their baseline (e.g., driver race as a reference category, date at zero, driver gender as female, etc.), the log-odds of an arrest are negative, implying a low baseline probability of arrest.</p>
+<ol start="2" type="1">
+<li>Driver Race:<br>
+</li>
+</ol>
 <ul>
-<li>Does race impact the duration of stop and the extent of search?</li>
-<li>What is the most common reason for stops?</li>
-<li>Does the proportion of drug-related stops to total stops vary significantly between races?</li>
-<li>Does the proportion of drug-related stops to total stops vary significantly between races?</li>
-<li>Is there a correlation between race and stop_outcome = arrest?</li>
-<li>What is the distribution of stops in districts in terms of race?</li>
-<li>What is the probability a search is conducted depending on the race?</li>
-<li>Controlling for stop date, gender, and district, what’s the correlation between race and arrest?</li>
+<li>Black Drivers: The coefficient (1.218, p &lt; 0.001) indicates a significant positive association between being a Black driver and the likelihood of arrest. This suggests that Black drivers are more likely to be arrested compared to the baseline race category.</li>
+<li>Hispanic Drivers: The coefficient (1.262, p &lt; 0.001) also shows a significant positive correlation, implying that Hispanic drivers face a similarly increased likelihood of arrest.</li>
+<li>White Drivers: The coefficient (0.361, p &lt; 0.05) indicates a smaller but still significant positive relationship compared to the baseline.</li>
+<li>Other: The negative coefficient (-0.976, p &gt; 0.05) suggests a reduced likelihood of arrest for drivers in the “Other” race category, but this finding is not statistically significant.</li>
 </ul>
-<p>We also did some basic data cleaning, which involves uploading the data and taking out empty rows. We also removed the county and state column because the county values were all null and the entire dataset is collected from Rhode Island. We also modified the stop_time variable to the actual time of day, instead of seconds into the day, making it easier to read. Here is the code for all the modification:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load packages</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>traffic_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"dataset"</span>, <span class="st">"Traffic stops in Rhode Island.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 91741 Columns: 15
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr  (9): state, driver_gender, driver_race, violation_raw, violation, searc...
-lgl  (4): county_name, search_conducted, is_arrested, drugs_related_stop
-date (1): stop_date
-time (1): stop_time
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean data</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>traffic_data_cleaned <span class="ot">&lt;-</span> traffic_data <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(driver_race) <span class="sc">&amp;</span> </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span><span class="fu">is.na</span>(driver_gender) <span class="sc">&amp;</span> </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span><span class="fu">is.na</span>(violation_raw) <span class="sc">&amp;</span> </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span><span class="fu">is.na</span>(violation) <span class="sc">&amp;</span> </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span><span class="fu">is.na</span>(search_conducted) <span class="sc">&amp;</span> </span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span><span class="fu">is.na</span>(stop_outcome) <span class="sc">&amp;</span> </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span><span class="fu">is.na</span>(stop_duration) <span class="sc">&amp;</span> </span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span><span class="fu">is.na</span>(drugs_related_stop)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>state, <span class="sc">-</span>county_name)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Change stop_time to numeric</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>traffic_data_cleaned<span class="sc">$</span>stop_time <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(traffic_data_cleaned<span class="sc">$</span>stop_time)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to convert sec to time of day</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>secs_to_time_of_day <span class="ot">&lt;-</span> <span class="cf">function</span>(seconds) {</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  hours <span class="ot">&lt;-</span> (seconds <span class="sc">%/%</span> <span class="dv">3600</span>) <span class="sc">%%</span> <span class="dv">24</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  minutes <span class="ot">&lt;-</span> (seconds <span class="sc">%/%</span> <span class="dv">60</span>) <span class="sc">%%</span> <span class="dv">60</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  secs <span class="ot">&lt;-</span> seconds <span class="sc">%%</span> <span class="dv">60</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sprintf</span>(<span class="st">"%02d:%02d:%02d"</span>, hours, minutes, secs)</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply conversion function</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>traffic_data_cleaned<span class="sc">$</span>stop_time <span class="ot">&lt;-</span> <span class="fu">sapply</span>(traffic_data_cleaned<span class="sc">$</span>stop_time, secs_to_time_of_day)</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Save cleaned data as an .rds file</span></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="co"># How to call data later: cleaned_data &lt;- read_rds(here::here("dataset", "cleaned_dataset.rds"))</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(traffic_data_cleaned, here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"dataset"</span>, <span class="st">"cleaned_dataset.rds"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<ol start="3" type="1">
+<li><p>Stop Date:<br>
+The small negative coefficient (-0.000195, p &lt; 0.001) for stop_date indicates a slight but statistically significant decrease in the likelihood of arrest over time.</p></li>
+<li><p>Driver Gender:<br>
+Male Drivers: The positive coefficient (0.220, p &lt; 0.001) implies that male drivers have a significantly higher chance of arrest compared to female drivers.</p></li>
+<li><p>Districts:<br>
+Districts K2, K3, X3, and X4 have significant positive coefficients, suggesting these zones are associated with a higher likelihood of arrest. District X1 does not show a significant effect on the arrest likelihood.</p></li>
+</ol>
+<p><strong>Statistical Significance:</strong><br>
+The model’s p-values indicate that most of the predictors are statistically significant (p &lt; 0.05), except for the driver_race Other and districtZone X1, which do not provide strong evidence of association with the response variable.</p>
+<p><strong>Model Performance:</strong><br>
+- AIC (25801): The Akaike Information Criterion (AIC) suggests how well the model fits the data, with a lower value indicating a better fit. - Residual Deviance (25777) vs.&nbsp;Null Deviance (26583): The reduction in deviance demonstrates that the model explains more variance in the response variable compared to an intercept-only model.</p>
+<p><strong>Interpretation:</strong><br>
+The analysis suggests that race and gender are significant predictors of arrest during traffic stops, with Black and Hispanic drivers having a notably higher likelihood of arrest than other groups. The model also highlights geographical differences, with certain districts being more prone to arrests than others.</p>
 
 
 
