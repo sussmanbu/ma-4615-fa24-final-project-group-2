@@ -138,4 +138,4 @@ print(plot1)
 print(plot2)
 print(plot3)
 ```
-Here, we can see stopped drivers are most frequently white, then black, then hispanic, then asian. Among each race, it seems citations are the most likeley outcome, then warning, then arrest. It seems the driver is arrested more frequently for Blacks and Hispanics then other races. In addition, the frequency of traffic stops over time seems roughly constnant, with a spike around 2013.
+Here, we can see stopped drivers are most frequently white, then black, then hispanic, then asian. Among each race, it seems citations are the most likeley outcome, then warning, then arrest. It seems the driver is arrested more frequently for Blacks and Hispanics then other races. In addition, the frequency of traffic stops over time seems roughly constant, with a spike around 2013.
