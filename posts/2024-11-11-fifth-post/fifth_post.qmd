@@ -1,0 +1,66 @@
+---
+title: "Fifth Post"
+author: "Group 2"
+format: html
+editor: visual
+description: "This post details our incorportation of other data"
+date: "2024-11-11"
+---
+
+Finding and implementing another dataset:
+
+https://www.kaggle.com/datasets/asaniczka/san-francisco-police-stop-data-2018-2023
+This dataset sourced from kaggle, contains detailed records of the police stops conducted in San Francisco over the last 5 years. It includes information such as the location, reason for stop and races that we need to make the comparative analysis.
+
+The entire database containing traffic data for all regions across the nation can be found here:
+https://openpolicing.stanford.edu/data/
+
+To incorporate a wider range of data for the purpose of our study, we wanted to bring in traffic stop data from other locations beyond Rhode Island. By looking at traffic data from other states across the country, we can see whether the trends observed in Rhode Island are specific to the area or not. To this end, we will incorporate a similar police stop data set, this time from San Francisco. Studying a dataset from California will allow us to compare East Coast trends against West Coast trends. 
+
+Although the dataset is similar in format to the Rhode Island one (being sourced from the same Stanford Policing Project) it will require a significant amount of cleaning to be utilized for several reasons. First, the San Francisco data lists the stop duration variable as a continuous numeric value, recording the precise duration of the stop instead of discrete bins as in the Rhode Island data. In addition, the San Francisco data includes a numeric code for their categorical variables such as ‘action taken,’ ‘reason for stop’ and ‘result of stop.’ We will need to do significant translating of the row values, column names, and column types in order to make the two datasets compatible with each other. 
+
+Here is what the raw dataset looks like:
+
+```{r}
+readRDS(here::here("dataset", "sf_raw_dataset.rds"))|>
+  head(10)
+  
+```
+
+So far, our work to implement the SF data set into our RI one can be found in `scripts/load_and_clean_data2`. A preview of the code can be found below:
+
+```{r}
+library(tidyverse)
+library(dplyr)
+
+# Load data
+ri_traffic_data_clean <- readRDS(here::here("dataset", "cleaned_dataset.rds"))
+sf_traffic_data <- readRDS(here::here("dataset", "sf_raw_dataset.rds"))
+
+# variables in RI data
+# stop_date, stop_time, driver_gender, driver_race, violation_raw, violation
+# search_conducted, search_type, stop_outcome, is_arrested, stop_duration
+# drugs_related_stop, district
+
+ri_traffic_data_clean = ri_traffic_data_clean|>
+  mutate(state = "Rhode Island",
+         driver_race = tolower(driver_race))
+
+# omitted columns are already in the dataset correctly labeled
+sf_traffic_data_clean = sf_traffic_data|>
+  filter(!is.na(subject_sex) | 
+         !is.na(subject_race))|>
+  mutate(state = "California",
+         stop_date = date,
+         stop_time = time,
+         driver_gender = if_else(subject_sex == 'male', 'M', 'F'),
+         driver_race = if_else(subject_race == 'asian/pacific islander', 'asian', subject_race),
+         violation_raw = NULL, # differing values
+         violation = NULL, # differing values
+         search_type = NULL, # not included
+         stop_outcome = NULL, # differing values
+         is_arrested = arrest_made,
+         stop_duration = NULL, # not included,
+         drugs_related_stop = NULL, # not included,
+         )
+```
