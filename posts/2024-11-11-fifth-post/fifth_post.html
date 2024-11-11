@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Group 2">
+<meta name="dcterms.date" content="2024-11-11">
+<meta name="description" content="This post details our incorportation of other data">
 
-<title>Group 2 MA [46]15 Final Project - MA [46]15 Final Project</title>
+<title>Group 2 MA [46]15 Final Project - Fifth Post</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +23,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,77 +103,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Group 2 MA [46]15 Final Project</span>
     </a>
   </div>
@@ -149,19 +126,19 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./big_picture.html"> 
+    <a class="nav-link" href="../../big_picture.html"> 
 <span class="menu-text">Big Picture</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./analysis.html"> 
+    <a class="nav-link" href="../../analysis.html"> 
 <span class="menu-text">Analysis</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./data.html"> 
+    <a class="nav-link" href="../../data.html"> 
 <span class="menu-text">Data</span></a>
   </li>  
 </ul>
@@ -174,281 +151,178 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">MA [46]15 Final Project</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">Fifth Post</h1>
+                  <div>
+        <div class="description">
+          This post details our incorportation of other data
+        </div>
+      </div>
+                </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Group 2 </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">November 11, 2024</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(8)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
-<p><img src="images/data-science.png" class="img-fluid"></p>
-<section id="final-project-due-may-7-2024-at-1159pm." class="level1">
-<h1>Final Project due May 7, 2024 at 11:59pm.</h1>
+<p>Finding and implementing another dataset:</p>
+<p>https://www.kaggle.com/datasets/asaniczka/san-francisco-police-stop-data-2018-2023 This dataset sourced from kaggle, contains detailed records of the police stops conducted in San Francisco over the last 5 years. It includes information such as the location, reason for stop and races that we need to make the comparative analysis.</p>
+<p>The entire database containing traffic data for all regions across the nation can be found here: https://openpolicing.stanford.edu/data/</p>
+<p>To incorporate a wider range of data for the purpose of our study, we wanted to bring in traffic stop data from other locations beyond Rhode Island. By looking at traffic data from other states across the country, we can see whether the trends observed in Rhode Island are specific to the area or not. To this end, we will incorporate a similar police stop data set, this time from San Francisco. Studying a dataset from California will allow us to compare East Coast trends against West Coast trends.</p>
+<p>Although the dataset is similar in format to the Rhode Island one (being sourced from the same Stanford Policing Project) it will require a significant amount of cleaning to be utilized for several reasons. First, the San Francisco data lists the stop duration variable as a continuous numeric value, recording the precise duration of the stop instead of discrete bins as in the Rhode Island data. In addition, the San Francisco data includes a numeric code for their categorical variables such as ‘action taken,’ ‘reason for stop’ and ‘result of stop.’ We will need to do significant translating of the row values, column names, and column types in order to make the two datasets compatible with each other.</p>
+<p>Here is what the raw dataset looks like:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"dataset"</span>, <span class="st">"sf_raw_dataset.rds"</span>))<span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   raw_row_number       date      time                  location      lat
+1          869921 2014-08-01   60 secs      MASONIC AV &amp; FELL ST 37.77300
+2          869922 2014-08-01   60 secs             GEARY&amp;10TH AV 37.78090
+3          869923 2014-08-01  900 secs       SUTTER N OCTAVIA ST 37.78692
+4          869924 2014-08-01 1080 secs         3RD ST &amp; DAVIDSON 37.74638
+5          869925 2014-08-01 1140 secs DIVISADERO ST. &amp; BUSH ST. 37.78635
+6          869926 2014-08-01 1800 secs     3RD ST AND GALVEZ AVE 37.74108
+7          869927 2014-08-01 1800 secs     COLUMBUS AND BROADWAY 37.79787
+8          869928 2014-08-01 2100 secs         INGALLS &amp; QUESADA 37.72912
+9          869929 2014-08-01 3600 secs       17TH ST &amp; BRYANT ST 37.76432
+10         869930 2014-08-01 3600 secs  FULTON ST. &amp; FUNSTON AV. 37.77317
+         lng district subject_age           subject_race subject_sex      type
+1  -122.4459     &lt;NA&gt;          NA asian/pacific islander      female vehicular
+2  -122.4686     &lt;NA&gt;          NA                  black        male vehicular
+3  -122.4267     &lt;NA&gt;          NA               hispanic        male vehicular
+4  -122.3920     &lt;NA&gt;          NA               hispanic        male vehicular
+5  -122.4400     &lt;NA&gt;          NA                  white        male vehicular
+6  -122.3884     &lt;NA&gt;          NA                  black        male vehicular
+7  -122.4067     &lt;NA&gt;          NA               hispanic        male vehicular
+8  -122.3840     &lt;NA&gt;          NA                  black      female vehicular
+9  -122.4104     &lt;NA&gt;          NA                  black        male vehicular
+10 -122.4713     &lt;NA&gt;          NA                  white      female vehicular
+   arrest_made citation_issued warning_issued  outcome contraband_found
+1        FALSE           FALSE           TRUE  warning               NA
+2        FALSE            TRUE          FALSE citation               NA
+3        FALSE            TRUE          FALSE citation               NA
+4        FALSE           FALSE           TRUE  warning               NA
+5        FALSE            TRUE          FALSE citation               NA
+6        FALSE            TRUE          FALSE citation               NA
+7        FALSE            TRUE          FALSE citation               NA
+8        FALSE            TRUE          FALSE citation               NA
+9        FALSE            TRUE          FALSE citation               NA
+10       FALSE            TRUE          FALSE citation               NA
+   search_conducted search_vehicle search_basis
+1             FALSE          FALSE         &lt;NA&gt;
+2             FALSE          FALSE         &lt;NA&gt;
+3             FALSE          FALSE         &lt;NA&gt;
+4             FALSE          FALSE         &lt;NA&gt;
+5             FALSE          FALSE         &lt;NA&gt;
+6             FALSE          FALSE         &lt;NA&gt;
+7             FALSE          FALSE         &lt;NA&gt;
+8             FALSE          FALSE         &lt;NA&gt;
+9             FALSE          FALSE         &lt;NA&gt;
+10            FALSE          FALSE         &lt;NA&gt;
+                             reason_for_stop raw_search_vehicle_description
+1  Mechanical or Non-Moving Violation (V.C.)                      No Search
+2  Mechanical or Non-Moving Violation (V.C.)                      No Search
+3  Mechanical or Non-Moving Violation (V.C.)                      No Search
+4  Mechanical or Non-Moving Violation (V.C.)                      No Search
+5  Mechanical or Non-Moving Violation (V.C.)                      No Search
+6  Mechanical or Non-Moving Violation (V.C.)                      No Search
+7                           Moving Violation                      No Search
+8  Mechanical or Non-Moving Violation (V.C.)                      No Search
+9  Mechanical or Non-Moving Violation (V.C.)                      No Search
+10                          Moving Violation                      No Search
+   raw_result_of_contact_description
+1                            Warning
+2                           Citation
+3                           Citation
+4                            Warning
+5                           Citation
+6                           Citation
+7                           Citation
+8                           Citation
+9                           Citation
+10                          Citation</code></pre>
+</div>
+</div>
+<p>So far, our work to implement the SF data set into our RI one can be found in <code>scripts/load_and_clean_data2</code>. A preview of the code can be found below:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>ri_traffic_data_clean <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"dataset"</span>, <span class="st">"cleaned_dataset.rds"</span>))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>sf_traffic_data <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"dataset"</span>, <span class="st">"sf_raw_dataset.rds"</span>))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># variables in RI data</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># stop_date, stop_time, driver_gender, driver_race, violation_raw, violation</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># search_conducted, search_type, stop_outcome, is_arrested, stop_duration</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># drugs_related_stop, district</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>ri_traffic_data_clean <span class="ot">=</span> ri_traffic_data_clean<span class="sc">|&gt;</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">state =</span> <span class="st">"Rhode Island"</span>,</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>         <span class="at">driver_race =</span> <span class="fu">tolower</span>(driver_race))</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># omitted columns are already in the dataset correctly labeled</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>sf_traffic_data_clean <span class="ot">=</span> sf_traffic_data<span class="sc">|&gt;</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(subject_sex) <span class="sc">|</span> </span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>         <span class="sc">!</span><span class="fu">is.na</span>(subject_race))<span class="sc">|&gt;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">state =</span> <span class="st">"California"</span>,</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>         <span class="at">stop_date =</span> date,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">stop_time =</span> time,</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">driver_gender =</span> <span class="fu">if_else</span>(subject_sex <span class="sc">==</span> <span class="st">'male'</span>, <span class="st">'M'</span>, <span class="st">'F'</span>),</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>         <span class="at">driver_race =</span> <span class="fu">if_else</span>(subject_race <span class="sc">==</span> <span class="st">'asian/pacific islander'</span>, <span class="st">'asian'</span>, subject_race),</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>         <span class="at">violation_raw =</span> <span class="cn">NULL</span>, <span class="co"># differing values</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>         <span class="at">violation =</span> <span class="cn">NULL</span>, <span class="co"># differing values</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>         <span class="at">search_type =</span> <span class="cn">NULL</span>, <span class="co"># not included</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>         <span class="at">stop_outcome =</span> <span class="cn">NULL</span>, <span class="co"># differing values</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>         <span class="at">is_arrested =</span> arrest_made,</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>         <span class="at">stop_duration =</span> <span class="cn">NULL</span>, <span class="co"># not included,</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>         <span class="at">drugs_related_stop =</span> <span class="cn">NULL</span>, <span class="co"># not included,</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>         )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 
-</section>
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1731301200000" data-listing-file-modified-sort="1731347417752" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="532">
-<div class="thumbnail">
-<p><a href="./posts/2024-11-11-fifth-post/fifth_post.html" class="no-external"></a></p><a href="./posts/2024-11-11-fifth-post/fifth_post.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/2024-11-11-fifth-post/fifth_post.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2024-11-11-fifth-post/fifth_post.html" class="no-external">Fifth Post</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2024-11-11-fifth-post/fifth_post.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/2024-11-11-fifth-post/fifth_post.html" class="no-external">This post details our incorportation of other data</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2024-11-11-fifth-post/fifth_post.html" class="no-external">
-<div class="listing-date">
-Nov 11, 2024
-</div>
-<div class="listing-author">
-Group 2
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1730696400000" data-listing-file-modified-sort="1730739151767" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="504">
-<div class="thumbnail">
-<p><a href="./posts/2024-11-4-fourth-post/linear-model.html" class="no-external"></a></p><a href="./posts/2024-11-4-fourth-post/linear-model.html" class="no-external">
-<p class="card-img-top"><img src="images\traffic-summary.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/2024-11-4-fourth-post/linear-model.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2024-11-4-fourth-post/linear-model.html" class="no-external">Fourth Post</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2024-11-4-fourth-post/linear-model.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/2024-11-4-fourth-post/linear-model.html" class="no-external">This post details our linear regression model</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2024-11-4-fourth-post/linear-model.html" class="no-external">
-<div class="listing-date">
-Nov 4, 2024
-</div>
-<div class="listing-author">
-Group 2
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1729828800000" data-listing-file-modified-sort="1729869741661" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="308">
-<div class="thumbnail">
-<p><a href="./posts/2024-10-25-third-post/third post.html" class="no-external"></a></p><a href="./posts/2024-10-25-third-post/third post.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/2024-10-25-third-post/third post.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2024-10-25-third-post/third post.html" class="no-external">Third Post</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2024-10-25-third-post/third post.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/2024-10-25-third-post/third post.html" class="no-external">This post details our drafting of data.qmd and initial analysis</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2024-10-25-third-post/third post.html" class="no-external">
-<div class="listing-date">
-Oct 25, 2024
-</div>
-<div class="listing-author">
-Group 2
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1729224000000" data-listing-file-modified-sort="1730902750979" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="427">
-<div class="thumbnail">
-<p><a href="./posts/2024-10-18-second-post/second post.html" class="no-external"></a></p><a href="./posts/2024-10-18-second-post/second post.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/2024-10-18-second-post/second post.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2024-10-18-second-post/second post.html" class="no-external">Second Post</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2024-10-18-second-post/second post.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/2024-10-18-second-post/second post.html" class="no-external">This post details our dataset seleciton and data cleaning</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2024-10-18-second-post/second post.html" class="no-external">
-<div class="listing-date">
-Oct 18, 2024
-</div>
-<div class="listing-author">
-Group 2
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1728619200000" data-listing-file-modified-sort="1730739778380" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="367">
-<div class="thumbnail">
-<p><a href="./posts/2024-10-24-first-post/First Post.html" class="no-external"></a></p><a href="./posts/2024-10-24-first-post/First Post.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/2024-10-24-first-post/First Post.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2024-10-24-first-post/First Post.html" class="no-external">First Post</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2024-10-24-first-post/First Post.html" class="no-external"></a>
-</div>
-<div class="listing-description">
-<a href="./posts/2024-10-24-first-post/First Post.html" class="no-external">This post details our research on potential datasets</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2024-10-24-first-post/First Post.html" class="no-external">
-<div class="listing-date">
-Oct 11, 2024
-</div>
-<div class="listing-author">
-Group 2
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="" data-listing-date-sort="1708923600000" data-listing-file-modified-sort="1728307173799" data-listing-date-modified-sort="1708923600000" data-listing-reading-time-sort="1" data-listing-word-count-sort="56">
-<div class="thumbnail">
-<p><a href="./posts/2023-12-20-examples/examples.html" class="no-external"></a></p><a href="./posts/2023-12-20-examples/examples.html" class="no-external">
-<p class="card-img-top"><img src="posts\2023-12-20-examples\examples_files\figure-html\unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p>
-</a><p><a href="./posts/2023-12-20-examples/examples.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2023-12-20-examples/examples.html" class="no-external">Examples</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2023-12-20-examples/examples.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-
-</div>
-<div class="listing-description">
-<a href="./posts/2023-12-20-examples/examples.html" class="no-external">Here are some examples of changing the size of a figure.</a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2023-12-20-examples/examples.html" class="no-external">
-<div class="listing-date">
-Feb 26, 2024
-</div>
-<div class="listing-author">
-Daniel Sussman
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-categories="" data-listing-date-sort="1708664400000" data-listing-file-modified-sort="1728307173799" data-listing-date-modified-sort="1708664400000" data-listing-reading-time-sort="3" data-listing-word-count-sort="402">
-<div class="thumbnail">
-<p><a href="./posts/2023-10-15-getting-started/getting-started.html" class="no-external"></a></p><a href="./posts/2023-10-15-getting-started/getting-started.html" class="no-external">
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-</a><p><a href="./posts/2023-10-15-getting-started/getting-started.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2023-10-15-getting-started/getting-started.html" class="no-external">Getting started</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2023-10-15-getting-started/getting-started.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-
-</div>
-<div class="listing-description">
-<a href="./posts/2023-10-15-getting-started/getting-started.html" class="no-external">Directions to set up your website and create your first post. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2023-10-15-getting-started/getting-started.html" class="no-external">
-<div class="listing-date">
-Feb 23, 2024
-</div>
-<div class="listing-author">
-Daniel Sussman
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-categories="" data-listing-date-sort="1708491600000" data-listing-file-modified-sort="1728307173796" data-listing-date-modified-sort="1708491600000" data-listing-reading-time-sort="3" data-listing-word-count-sort="404">
-<div class="thumbnail">
-<p><a href="./posts/2023-10-13-first-team-meeting/first-team-meeting.html" class="no-external"></a></p><a href="./posts/2023-10-13-first-team-meeting/first-team-meeting.html" class="no-external">
-<p><img src="./posts/2023-10-13-first-team-meeting/a-business-team-giving-fist-bump-in-agreement.jpg" class="thumbnail-image"></p>
-</a><p><a href="./posts/2023-10-13-first-team-meeting/first-team-meeting.html" class="no-external"></a></p>
-</div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/2023-10-13-first-team-meeting/first-team-meeting.html" class="no-external">First Team Meeting</a>
-</h3>
-<div class="listing-subtitle">
-<a href="./posts/2023-10-13-first-team-meeting/first-team-meeting.html" class="no-external"></a>
-</div>
-<div class="listing-categories">
-
-</div>
-<div class="listing-description">
-<a href="./posts/2023-10-13-first-team-meeting/first-team-meeting.html" class="no-external">This post details the steps you’ll take for your first team meeting. </a>
-</div>
-</div>
-<div class="metadata">
-<a href="./posts/2023-10-13-first-team-meeting/first-team-meeting.html" class="no-external">
-<div class="listing-date">
-Feb 21, 2024
-</div>
-<div class="listing-author">
-Daniel Sussman
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
