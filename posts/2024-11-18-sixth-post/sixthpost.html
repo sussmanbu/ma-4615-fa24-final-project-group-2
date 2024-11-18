@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Group 2">
-<meta name="dcterms.date" content="2024-11-11">
+<meta name="dcterms.date" content="2024-11-18">
 <meta name="description" content="This post details our EDA of San Fransicso data">
 
 <title>Group 2 MA [46]15 Final Project - Sixth Post</title>
@@ -174,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">November 11, 2024</p>
+        <p class="date">November 18, 2024</p>
       </div>
     </div>
     
@@ -288,6 +288,23 @@ Number of Fisher Scoring iterations: 7</code></pre>
           0.4345004           1.3973248           2.5279065 </code></pre>
 </div>
 </div>
+<p><strong>Findings:</strong></p>
+<ol type="1">
+<li><p>Intercept: the positive coefficient of the intencept(6.772e-01) suggests that when all other predictors are at their baseline, the log-odds of an arrest are positive, implying a higher baseline probability of arrest.</p></li>
+<li><p>Driver_race: The coefficient (1.457e-02, p = 0.0321) indicates a weak but statistically significant positive association between race as a factor and the likelihood of arrest.</p></li>
+<li><p>Driver_gender: The coefficient (-4.527e-01, p &lt; 0.001) for driver_gender suggests a statistically significant negative relationship between being female and the likelihood of arrest, meaning male drivers have higher odds of being arrested.&nbsp;</p></li>
+<li><p>Stop_dates: The coefficient (-3.312e-04, p &lt; 0.001) indicates a very small but statistically significant decrease in the likelihood of arrest over time.&nbsp;</p></li>
+<li><p>District: The coefficient (7.004e-03, p = 0.0409) suggests a significant positive association between district variations and the likelihood of arrest.&nbsp;</p></li>
+</ol>
+<p><strong>Statistical Significance:</strong></p>
+<p>The model’s p-values show that most predictors are statistically significant (p &lt; 0.05), indicating they have significant relationships with the likelihood of arrest.&nbsp;</p>
+<p><strong>Model Performance:</strong></p>
+<ul>
+<li><p>AIC (115620): The Akaike Information Criterion (AIC) suggests a reasonably good fit for the data, with lower values indicating better model performance.&nbsp;</p></li>
+<li><p>Residual Deviance (115610) vs.&nbsp;Null Deviance (117053): The reduction in deviance highlights the model’s ability to explain variance in the response variable compared to an intercept-only model.</p></li>
+</ul>
+<p><strong>Interpretation:</strong></p>
+<p>The analysis underscores the role of race, gender, and geographic location in predicting arrest probability, with significant contributions from male gender and specific districts. The trends in stop_date further highlight potential temporal patterns in arrests. While the model fits the data well, disparities in predictive factors warrant further investigation.</p>
 <p>Below are some graphs to visualize the raw San Francisco data. As seen below, this data includes a much larger proportion of black and hispanic drivers compared to the RI data, and Blacks seem to be given warnings with a slightly higher proportion than other races:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>arrest_rates <span class="ot">&lt;-</span> sf_traffic_data_clean <span class="sc">%&gt;%</span></span>
