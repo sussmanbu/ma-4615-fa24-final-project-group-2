@@ -27,6 +27,32 @@ summary(model)
 exp(coef(model))
 ```
 
+**Findings:**
+
+1.  Intercept: the positive coefficient of the intencept(6.772e-01) suggests that when all other predictors are at their baseline, the log-odds of an arrest are positive, implying a higher baseline probability of arrest.
+
+2.  Driver_race: The coefficient (1.457e-02, p = 0.0321) indicates a weak but statistically significant positive association between race as a factor and the likelihood of arrest.
+
+3.  Driver_gender: The coefficient (-4.527e-01, p \< 0.001) for driver_gender suggests a statistically significant negative relationship between being female and the likelihood of arrest, meaning male drivers have higher odds of being arrested. 
+
+4.  Stop_dates: The coefficient (-3.312e-04, p \< 0.001) indicates a very small but statistically significant decrease in the likelihood of arrest over time. 
+
+5.  District: The coefficient (7.004e-03, p = 0.0409) suggests a significant positive association between district variations and the likelihood of arrest. 
+
+**Statistical Significance:**
+
+The model's p-values show that most predictors are statistically significant (p \< 0.05), indicating they have significant relationships with the likelihood of arrest. 
+
+**Model Performance:**
+
+-   AIC (115620): The Akaike Information Criterion (AIC) suggests a reasonably good fit for the data, with lower values indicating better model performance. 
+
+-   Residual Deviance (115610) vs. Null Deviance (117053): The reduction in deviance highlights the model's ability to explain variance in the response variable compared to an intercept-only model.
+
+**Interpretation:**
+
+The analysis underscores the role of race, gender, and geographic location in predicting arrest probability, with significant contributions from male gender and specific districts. The trends in stop_date further highlight potential temporal patterns in arrests. While the model fits the data well, disparities in predictive factors warrant further investigation.
+
 Below are some graphs to visualize the raw San Francisco data. As seen below, this data includes a much larger proportion of black and hispanic drivers compared to the RI data, and Blacks seem to be given warnings with a slightly higher proportion than other races:
 
 ```{r}
