@@ -6,11 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Daniel Sussman">
-<meta name="dcterms.date" content="2024-02-23">
-<meta name="description" content="Directions to set up your website and create your first post.">
+<meta name="author" content="Group 2">
+<meta name="dcterms.date" content="2024-11-18">
+<meta name="description" content="This post details our EDA of San Fransicso data">
 
-<title>Getting started – Group 2 MA [46]15 Final Project</title>
+<title>Sixth Post – Group 2 MA [46]15 Final Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -118,10 +152,10 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Getting started</h1>
+      <h1 class="title">Sixth Post</h1>
                   <div>
         <div class="description">
-          <p>Directions to set up your website and create your first post.</p>
+          This post details our EDA of San Fransicso data
         </div>
       </div>
                 </div>
@@ -133,23 +167,17 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Author</div>
       <div class="quarto-title-meta-contents">
-               <p>Daniel Sussman </p>
+               <p>Group 2 </p>
             </div>
     </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">February 23, 2024</p>
+        <p class="date">November 18, 2024</p>
       </div>
     </div>
     
-      <div>
-      <div class="quarto-title-meta-heading">Modified</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date-modified">February 23, 2024</p>
-      </div>
-    </div>
       
     </div>
     
@@ -165,54 +193,135 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>Below, the items marked with <strong>[[OP]]</strong> should only be done by one person on the team.</p>
-<section id="to-get-started" class="level3">
-<h3 class="anchored" data-anchor-id="to-get-started">To get started</h3>
-<ol type="1">
-<li><strong>[[OP]]</strong> One person from the team should click the Github Classroom link on Teams.</li>
-<li><strong>[[OP]]</strong> That person types in the group name for their group.</li>
-<li>The rest of the team now clicks the Github Classroom link and selects their team from the dropdown list.</li>
-<li>Finally, each of you can clone the repository to your laptop like a normal assignment.</li>
-</ol>
-</section>
-<section id="setting-up-the-site" class="level3">
-<h3 class="anchored" data-anchor-id="setting-up-the-site">Setting up the site</h3>
-<ol type="1">
-<li><strong>[[OP]]</strong> Open the terminal and run <code>quarto publish gh-pages</code>.</li>
-<li><strong>[[OP]]</strong> Select <code>Yes</code> to the prompt: <br> <code>? Publish site to https://sussmanbu.github.io/ma4615-fa23-final-project-TEAMNAME/ using gh-pages? (Y/n)</code></li>
-<li><strong>[[OP]]</strong> Wait for the process to finish.</li>
-<li>Once it is done, you can go to the URL it asked you about to see your site.</li>
-</ol>
-<p><strong>Note</strong>: This is the process you will use every time you want to update your published site. Make sure to always follow the steps below for rendering, previewing, and committing your changes before doing these publish steps. Anyone can publish in the future.</p>
-</section>
-<section id="customize-your-site" class="level3">
-<h3 class="anchored" data-anchor-id="customize-your-site">Customize your site</h3>
-<ol type="1">
-<li><strong>[[OP]]</strong> Open the <code>_quarto.yml</code> file and update the title to include your team name.</li>
-<li><strong>[[OP]]</strong> Go to the <code>about.qmd</code> and remove the TF’s and professor’s names.</li>
-<li>add your own along with a short introduction and a link to your Github user page.</li>
-<li><strong>[[OP]]</strong> Render the site.</li>
-<li><strong>[[OP]]</strong> Check and make sure you didn’t get any errors.</li>
-<li><strong>[[OP]]</strong> Commit your changes and push.</li>
-<li><strong>[[OP]]</strong> Repeat the steps under Setting up your site.</li>
-</ol>
-<p>Once one person is done with this, each teammate in the group can, in turn, repeat steps 3-7. Before doing so, make sure to <code>pull</code> the changes from teammates before starting to make new changes. (We’ll talk soon about ways to organize your work and resolve conflicts.)</p>
-</section>
-<section id="start-your-first-post" class="level3">
-<h3 class="anchored" data-anchor-id="start-your-first-post">Start your first post</h3>
-<ol type="1">
-<li>To start your first post first, run <code>remotes::install_github("sussmanbu/quartopost")</code> in your Console.</li>
-<li><strong>[[OP]]</strong> Run <code>quartopost::quartopost()</code> (or click Addins-&gt;Create Quarto Post, or use C-Shift-P, type “Create Quarto” and press enter to run the command).</li>
-</ol>
-<p>Now you can start working on your post. You’ll want to render your post to see what it will look like on the site.</p>
-<ul>
-<li>Every time you want to <strong>make a new post</strong>, you can repeat step 2 above.</li>
-<li>When you want to <strong>publish your progress</strong>, follow steps 4-7 from Customize your site.</li>
-</ul>
-<p>Finally, make sure to read through everything on <a href="https://sussmanbu.github.io/ma4615-final-project-quarto">this site</a> which has the directions and rubric for the final project.</p>
+<p>This week we finished implementing the data from San Francisco into our data set. In addition, we performed preliminary EDA on the San Francisco data by implementing the visualization and modeling methods used earlier. The complete data set with both the SF and RI data is generated through <code>"load_and_clean_data2.R"</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"scripts/load_and_clean_data2.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors
+Joining with `by = join_by(stop_date, stop_time, driver_gender, driver_race, violation, search_conducted, search_type, stop_outcome, is_arrested, stop_duration, drugs_related_stop, district, state)`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>full_traffic_data_clean<span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 13
+   stop_date  stop_time driver_gender driver_race violation search_conducted
+   &lt;date&gt;     &lt;chr&gt;     &lt;chr&gt;         &lt;chr&gt;       &lt;chr&gt;     &lt;lgl&gt;           
+ 1 2005-01-04 12:55:00  M             white       Equipment FALSE           
+ 2 2005-01-23 23:15:00  M             white       Speeding  FALSE           
+ 3 2005-02-17 04:15:00  M             white       Speeding  FALSE           
+ 4 2005-02-20 17:15:00  M             white       Other     FALSE           
+ 5 2005-02-24 01:20:00  F             white       Speeding  FALSE           
+ 6 2005-03-14 10:00:00  F             white       Speeding  FALSE           
+ 7 2005-03-29 21:55:00  M             white       Speeding  FALSE           
+ 8 2005-04-04 21:25:00  M             white       Speeding  FALSE           
+ 9 2005-07-14 11:20:00  F             white       Speeding  FALSE           
+10 2005-07-14 19:55:00  M             white       Speeding  FALSE           
+# ℹ 7 more variables: search_type &lt;chr&gt;, stop_outcome &lt;chr&gt;, is_arrested &lt;lgl&gt;,
+#   stop_duration &lt;chr&gt;, drugs_related_stop &lt;lgl&gt;, district &lt;chr&gt;, state &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>Below, you can see our code for modeling the likelihood of arrest by certain factors for our SF data alone. We can observe a noticeable difference in this model’s performance compared to the RI model; Race does not play as significant a role in predicting the probability of arrest here.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">glm</span>(is_arrested <span class="sc">~</span> driver_race <span class="sc">+</span> driver_gender <span class="sc">+</span> stop_date <span class="sc">+</span> district,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">data =</span> sf_traffic_data_clean, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">family =</span> binomial)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = is_arrested ~ driver_race + driver_gender + stop_date + 
+    district, family = binomial, data = sf_traffic_data_clean)
+
+Coefficients:
+                      Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)         -8.692e-01  1.624e-01  -5.351 8.73e-08 ***
+driver_raceblack     1.078e+00  3.541e-02  30.432  &lt; 2e-16 ***
+driver_racehispanic  8.353e-01  3.741e-02  22.329  &lt; 2e-16 ***
+driver_raceother     1.176e-01  4.504e-02   2.610 0.009058 ** 
+driver_racewhite     2.818e-01  3.383e-02   8.330  &lt; 2e-16 ***
+driver_genderM       4.391e-01  2.314e-02  18.979  &lt; 2e-16 ***
+stop_date           -3.027e-04  1.026e-05 -29.496  &lt; 2e-16 ***
+districtB            7.260e-02  4.985e-02   1.456 0.145320    
+districtC            1.405e-01  4.904e-02   2.865 0.004167 ** 
+districtD            6.713e-01  4.678e-02  14.352  &lt; 2e-16 ***
+districtE            2.036e-01  5.176e-02   3.933 8.38e-05 ***
+districtF            9.373e-02  5.664e-02   1.655 0.097986 .  
+districtG            3.370e-01  5.168e-02   6.521 6.99e-11 ***
+districtH            3.756e-01  4.690e-02   8.009 1.15e-15 ***
+districtI            1.855e-01  5.032e-02   3.687 0.000227 ***
+districtJ            3.987e-01  5.448e-02   7.317 2.53e-13 ***
+districtK           -8.336e-01  5.027e-01  -1.658 0.097306 .  
+districtS            3.346e-01  4.520e-01   0.740 0.459149    
+districtT            9.274e-01  5.083e-01   1.824 0.068095 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 121691  on 852882  degrees of freedom
+Residual deviance: 117985  on 852864  degrees of freedom
+  (52187 observations deleted due to missingness)
+AIC: 118023
+
+Number of Fisher Scoring iterations: 7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(model))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        (Intercept)    driver_raceblack driver_racehispanic    driver_raceother 
+          0.4192828           2.9380292           2.3054834           1.1247418 
+   driver_racewhite      driver_genderM           stop_date           districtB 
+          1.3254798           1.5512986           0.9996973           1.0753016 
+          districtC           districtD           districtE           districtF 
+          1.1508465           1.9568498           1.2257600           1.0982603 
+          districtG           districtH           districtI           districtJ 
+          1.4007383           1.4558570           1.2038369           1.4898221 
+          districtK           districtS           districtT 
+          0.4345004           1.3973248           2.5279065 </code></pre>
+</div>
+</div>
+<p>Below are some graphs to visualize the raw San Francisco data. As seen below, this data includes a much larger proportion of black and hispanic drivers compared to the RI data, and Blacks seem to be given warnings with a slightly higher proportion than other races:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>arrest_rates <span class="ot">&lt;-</span> sf_traffic_data_clean <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(driver_race) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">arrest_rate =</span> <span class="fu">mean</span>(is_arrested, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(arrest_rates, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(driver_race), <span class="at">y =</span> arrest_rate, <span class="at">fill =</span> <span class="fu">factor</span>(driver_race))) <span class="sc">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Arrest Rate by Race"</span>, <span class="at">x =</span> <span class="st">"Race"</span>, <span class="at">y =</span> <span class="st">"Arrest Rate"</span>) <span class="sc">+</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="sixthpost_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>race_stop_counts <span class="ot">&lt;-</span> sf_traffic_data <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(subject_race, raw_result_of_contact_description)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(race_stop_counts, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(subject_race), <span class="at">y =</span> n, <span class="at">fill =</span> raw_result_of_contact_description)) <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"fill"</span>) <span class="sc">+</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Stop Results by Race"</span>, <span class="at">x =</span> <span class="st">"Race"</span>, <span class="at">y =</span> <span class="st">"Proportion"</span>) <span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>percent) <span class="sc">+</span> <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="sixthpost_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
