@@ -9,15 +9,13 @@ date: "2024-11-11"
 
 Finding and implementing another dataset:
 
-https://www.kaggle.com/datasets/asaniczka/san-francisco-police-stop-data-2018-2023
-This dataset sourced from kaggle, contains detailed records of the police stops conducted in San Francisco over the last 5 years. It includes information such as the location, reason for stop and races that we need to make the comparative analysis.
+https://www.kaggle.com/datasets/asaniczka/san-francisco-police-stop-data-2018-2023 This dataset sourced from kaggle, contains detailed records of the police stops conducted in San Francisco over the last 5 years. It includes information such as the location, reason for stop and races that we need to make the comparative analysis.
 
-The entire database containing traffic data for all regions across the nation can be found here:
-https://openpolicing.stanford.edu/data/
+The entire database containing traffic data for all regions across the nation can be found here: https://openpolicing.stanford.edu/data/
 
-To incorporate a wider range of data for the purpose of our study, we wanted to bring in traffic stop data from other locations beyond Rhode Island. By looking at traffic data from other states across the country, we can see whether the trends observed in Rhode Island are specific to the area or not. To this end, we will incorporate a similar police stop data set, this time from San Francisco. Studying a dataset from California will allow us to compare East Coast trends against West Coast trends. 
+To incorporate a wider range of data for the purpose of our study, we wanted to bring in traffic stop data from other locations beyond Rhode Island. By looking at traffic data from other states across the country, we can see whether the trends observed in Rhode Island are specific to the area or not. To this end, we will incorporate a similar police stop data set, this time from San Francisco. Studying a dataset from California will allow us to compare East Coast trends against West Coast trends.
 
-Although the dataset is similar in format to the Rhode Island one (being sourced from the same Stanford Policing Project) it will require a significant amount of cleaning to be utilized for several reasons. First, the San Francisco data lists the stop duration variable as a continuous numeric value, recording the precise duration of the stop instead of discrete bins as in the Rhode Island data. In addition, the San Francisco data includes a numeric code for their categorical variables such as ‘action taken,’ ‘reason for stop’ and ‘result of stop.’ We will need to do significant translating of the row values, column names, and column types in order to make the two datasets compatible with each other. 
+Although the dataset is similar in format to the Rhode Island one (being sourced from the same Stanford Policing Project) it will require a significant amount of cleaning to be utilized for several reasons. First, the San Francisco data lists the stop duration variable as a continuous numeric value, recording the precise duration of the stop instead of discrete bins as in the Rhode Island data. In addition, the San Francisco data includes a numeric code for their categorical variables such as ‘action taken,’ ‘reason for stop’ and ‘result of stop.’ We will need to do significant translating of the row values, column names, and column types in order to make the two datasets compatible with each other.
 
 Here is what the raw dataset looks like:
 
