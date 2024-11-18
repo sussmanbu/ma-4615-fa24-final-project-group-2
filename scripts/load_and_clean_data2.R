@@ -31,4 +31,17 @@ sf_traffic_data_clean = sf_traffic_data|>
          is_arrested = arrest_made,
          stop_duration = NULL, # not included,
          drugs_related_stop = NULL, # not included,
+         )|>
+  select(stop_date, 
+         stop_time, 
+         driver_gender, 
+         driver_race, 
+         violation_raw, 
+         violation,
+         search_conducted
+         search_type, 
+         stop_outcome,
+         is_arrested,
+         stop_duration,
+         drugs_related_stop
          )
