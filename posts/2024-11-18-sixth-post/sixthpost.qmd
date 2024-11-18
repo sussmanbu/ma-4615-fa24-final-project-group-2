@@ -4,7 +4,7 @@ author: "Group 2"
 format: html
 editor: visual
 description: "This post details our EDA of San Fransicso data"
-date: "2024-11-11"
+date: "2024-11-18"
 ---
 
 This week we finished implementing the data from San Francisco into our data set. In addition, we performed preliminary EDA on the San Francisco data by implementing the visualization and modeling methods used earlier. The complete data set with both the SF and RI data is generated through `"load_and_clean_data2.R"`
@@ -17,8 +17,7 @@ full_traffic_data_clean|>
 
 ```
 
-
-Below, you can see our code for modeling the likelihood of arrest by certain factors for our SF data alone. We can observe a noticeable difference in this model’s performance compared to the RI model; Race does not play as significant a role in predicting the probability of arrest here. 
+Below, you can see our code for modeling the likelihood of arrest by certain factors for our SF data alone. We can observe a noticeable difference in this model’s performance compared to the RI model; Race does not play as significant a role in predicting the probability of arrest here.
 
 ```{r}
 model <- glm(is_arrested ~ driver_race + driver_gender + stop_date + district,
@@ -27,6 +26,7 @@ model <- glm(is_arrested ~ driver_race + driver_gender + stop_date + district,
 summary(model)
 exp(coef(model))
 ```
+
 Below are some graphs to visualize the raw San Francisco data. As seen below, this data includes a much larger proportion of black and hispanic drivers compared to the RI data, and Blacks seem to be given warnings with a slightly higher proportion than other races:
 
 ```{r}
@@ -48,6 +48,3 @@ ggplot(race_stop_counts, aes(x = factor(subject_race), y = n, fill = raw_result_
   scale_y_continuous(labels = scales::percent) + theme_minimal()
 
 ```
-
-
-
