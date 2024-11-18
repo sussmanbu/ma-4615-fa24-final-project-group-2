@@ -1,0 +1,50 @@
+---
+title: "Sixth Post"
+author: "Group 2"
+format: html
+editor: visual
+description: "This post details our EDA of San Fransicso data"
+date: "2024-11-18"
+---
+
+This week we finished implementing the data from San Francisco into our data set. In addition, we performed preliminary EDA on the San Francisco data by implementing the visualization and modeling methods used earlier. The complete data set with both the SF and RI data is generated through `"load_and_clean_data2.R"`
+
+```{r}
+source("scripts/load_and_clean_data2.R")
+
+full_traffic_data_clean|>
+  head(10)
+
+```
+
+Below, you can see our code for modeling the likelihood of arrest by certain factors for our SF data alone. We can observe a noticeable difference in this model’s performance compared to the RI model; Race does not play as significant a role in predicting the probability of arrest here.
+
+```{r}
+model <- glm(is_arrested ~ driver_race + driver_gender + stop_date + district,
+             data = sf_traffic_data_clean, 
+             family = binomial)
+summary(model)
+exp(coef(model))
+```
+
+Below are some graphs to visualize the raw San Francisco data. As seen below, this data includes a much larger proportion of black and hispanic drivers compared to the RI data, and Blacks seem to be given warnings with a slightly higher proportion than other races:
+
+```{r}
+arrest_rates <- sf_traffic_data_clean %>%
+  group_by(driver_race) %>%
+  summarize(arrest_rate = mean(is_arrested, na.rm = TRUE)) 
+
+ggplot(arrest_rates, aes(x = factor(driver_race), y = arrest_rate, fill = factor(driver_race))) +
+  geom_bar(stat = "identity") +
+  labs(title = "Arrest Rate by Race", x = "Race", y = "Arrest Rate") +
+  scale_y_continuous(labels = scales::percent) +    theme_minimal()
+
+race_stop_counts <- sf_traffic_data %>%
+  count(subject_race, raw_result_of_contact_description)
+
+ggplot(race_stop_counts, aes(x = factor(subject_race), y = n, fill = raw_result_of_contact_description)) +
+  geom_bar(stat = "identity", position = "fill") + 
+  labs(title = "Distribution of Stop Results by Race", x = "Race", y = "Proportion") +
+  scale_y_continuous(labels = scales::percent) + theme_minimal()
+
+```
