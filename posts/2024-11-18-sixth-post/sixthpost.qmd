@@ -29,29 +29,37 @@ exp(coef(model))
 
 **Findings:**
 
-1.  Intercept: the positive coefficient of the intencept(6.772e-01) suggests that when all other predictors are at their baseline, the log-odds of an arrest are positive, implying a higher baseline probability of arrest.
+1.  Intercept: The negative coefficient for the intercept (-8.692e-01) indicates that when all predictors are at their baseline (e.g., driver race as a reference category, stop date at zero, and driver gender as female), the log-odds of an arrest are negative, suggesting a lower baseline probability of arrest.
 
-2.  Driver_race: The coefficient (1.457e-02, p = 0.0321) indicates a weak but statistically significant positive association between race as a factor and the likelihood of arrest.
+2.  Driver Race: 
 
-3.  Driver_gender: The coefficient (-4.527e-01, p \< 0.001) for driver_gender suggests a statistically significant negative relationship between being female and the likelihood of arrest, meaning male drivers have higher odds of being arrested. 
+Black Drivers: The coefficient (1.078e+00, p \< 0.001) shows a significant positive association between being a Black driver and the likelihood of arrest, indicating a higher likelihood compared to the baseline race category.
 
-4.  Stop_dates: The coefficient (-3.312e-04, p \< 0.001) indicates a very small but statistically significant decrease in the likelihood of arrest over time. 
+Hispanic Drivers: The coefficient (8.353e-01, p \< 0.001) also shows a significant positive association, suggesting that Hispanic drivers are more likely to be arrested than the baseline race category. 
 
-5.  District: The coefficient (7.004e-03, p = 0.0409) suggests a significant positive association between district variations and the likelihood of arrest. 
+White Drivers: The coefficient (2.818e-01, p \< 0.001) suggests a smaller, but still significant, positive association with the likelihood of arrest. 
+
+Other Race: The coefficient (1.176e-01, p = 0.009058) suggests a modest but significant positive relationship with arrest likelihood.
+
+3.  Driver_gender: The positive coefficient (4.391e-01, p \< 0.001) indicates that male drivers are significantly more likely to be arrested than female drivers.\
+
+4.  Stop_dates: The small negative coefficient (-3.027e-04, p \< 0.001) suggests that the likelihood of arrest slightly decreases over time, a statistically significant trend.\
+
+5.  Districts: Districts C, D, G, H, and J have significant positive coefficients, suggesting these zones are associated with a higher likelihood of arrest. Districts B, S, and T do not show a statistically significant effect on the arrest likelihood, as indicated by their higher p-values. District K shows a negative coefficient, but it is not statistically significant, indicating no strong evidence of reduced arrest likelihood.
 
 **Statistical Significance:**
 
-The model's p-values show that most predictors are statistically significant (p \< 0.05), indicating they have significant relationships with the likelihood of arrest. 
+The model's p-values show that most predictors, including race (Black, Hispanic, White), gender, stop date, and certain districts (C, D, G, H, J), are statistically significant (p \< 0.05), indicating they have significant relationships with the likelihood of arrest. However, predictors such as districts B, S, T, and K are not statistically significant, suggesting no strong evidence of their association with the response variable.\
 
 **Model Performance:**
 
--   AIC (115620): The Akaike Information Criterion (AIC) suggests a reasonably good fit for the data, with lower values indicating better model performance. 
+-   Model Performance: AIC (118023): The Akaike Information Criterion indicates the model's fit, with a lower value suggesting a better fit. 
 
--   Residual Deviance (115610) vs. Null Deviance (117053): The reduction in deviance highlights the model's ability to explain variance in the response variable compared to an intercept-only model.
+-   Null Deviance: 121691 Residual Deviance: 117985 The reduction in deviance demonstrates that the model explains more variance in the response variable compared to an intercept-only model.
 
 **Interpretation:**
 
-The analysis underscores the role of race, gender, and geographic location in predicting arrest probability, with significant contributions from male gender and specific districts. The trends in stop_date further highlight potential temporal patterns in arrests. While the model fits the data well, disparities in predictive factors warrant further investigation.
+This analysis suggests that race and gender remain significant predictors of arrest during traffic stops. Specifically: Black and Hispanic drivers are significantly more likely to be arrested. Male drivers have a higher likelihood of arrest compared to female drivers. The model also reveals district-level differences, with certain districts such as Districts D, G, and H having a stronger association with arrests, while others show a weaker or no significant association. Stop date trends suggest a slight decrease in arrest likelihood over time.
 
 Below are some graphs to visualize the raw San Francisco data. As seen below, this data includes a much larger proportion of black and hispanic drivers compared to the RI data, and Blacks seem to be given warnings with a slightly higher proportion than other races:
 
