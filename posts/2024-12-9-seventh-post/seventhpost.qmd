@@ -1,0 +1,52 @@
+---
+title: "Seventh Post"
+author: "Group 2"
+format: html
+editor: visual
+description: "This post details our plans to wrap up our project"
+date: "2024-12-9"
+---
+
+How are you continuing your exploratory data analysis? We are building on our analysis by comparing regional disparities in traffic stops and their outcomes between Rhode Island and San Francisco. For Rhode Island, we refined our insights into the racial distribution of stops, stop outcomes, and arrest likelihood over time. Our findings reveal that San Francisco exhibits district-level differences, with certain districts such as Districts D, G, and H having a stronger association with arrests. Thus, we would like to explore more on district differences and explore whether enforcement trends vary across regions. Additionally, we are incorporating analysis for both datasets to understand how arrest trends evolve over time. We are now also considering adding external demographic data, such as population breakdowns, to contextualize racial disparities better. Furthermore, geospatial visualizations can help highlight district-level variations.
+
+Tentative thesis: Traffic stop arrest rates in Rhode Island and San Francisco are influenced by race, with Black and Hispanic facing significantly higher probabilities of arrest.
+
+Based on Rhode Island models, Blacks and Hispanics are about 5% more likely to be arrested compared to other races, when controlling for gender and location. This may not seem like much, however, considering the baseline chance of being arrested for Whites is about .5% (which is not significantly far from zero according to statistical convention). According to these point estimates, when controlling for other factors, Blacks and Hisapnics are more than ten times more likely to be arrested in any given traffic stop. Without controlling for other factors, we can see generally that Blacks and Hispanics are arrested about twice as frequently as other races (insert figure). Similarly in San Francisco, Blacks and Hispanics face a significantly higher probability of being arrested at a traffic stop.
+
+How do you plan to polish your visualizations and tables?
+
+We plan to add captions to make graphs even more clear and to add annotations to highlight key findings. We are also enhancing previous graphs and plots by adding different features such as ordering, labeling, coloring.
+
+For example, this updated bar graph presents a polished visualization of arrest rates by race for San Francisco's traffic stop data (2018–2023). It improves upon the original by introducing an intentional ordering of racial groups from the lowest to the highest arrest rate, making trends more immediately apparent. A descriptive subtitle, "San Francisco Traffic Stop Data (2018–2023)," provides critical context. Additionally, exact arrest rates are clearly displayed on each bar to improve precision and understanding. The bar with the highest arrest rate is distinctly highlighted, drawing attention to the key finding.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(readr)
+
+sf_traffic_data_clean <- read_rds(here::here("dataset", "sf_traffic_dataset_clean.rds"))
+
+arrest_rates <- sf_traffic_data_clean %>%
+  group_by(driver_race) %>%
+  summarize(arrest_rate = mean(is_arrested, na.rm = TRUE)) %>%
+  mutate(
+    highlight = ifelse(arrest_rate == max(arrest_rate), "Highest", "Other"),
+    driver_race = reorder(driver_race, arrest_rate) # Reorder factor levels
+  )
+
+
+ggplot(arrest_rates, aes(x = driver_race, y = arrest_rate, fill = highlight)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  geom_text(aes(label = scales::percent(arrest_rate, accuracy = 0.01)),
+            vjust = -0.5, size = 3) +
+  labs(
+    title = "Arrest Rate by Race",
+    subtitle = "San Francisco Traffic Stop Data (2018-2023)",
+    x = "Race",
+    y = "Arrest Rate"
+  ) +
+  scale_y_continuous(labels = scales::percent) +
+  scale_fill_manual(values = c("Highest" = "orange", "Other" = "lightblue")) +
+  theme_minimal()
+
+```

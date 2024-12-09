@@ -50,4 +50,5 @@ sf_traffic_data_clean = sf_traffic_data|>
         
 full_traffic_data_clean = full_join(ri_traffic_data_clean, sf_traffic_data_clean)
 
+saveRDS(sf_traffic_data_clean, here::here("dataset", "sf_traffic_dataset_clean.rds"))
 saveRDS(full_traffic_data_clean, here::here("dataset", "cleaned_dataset_full.rds"))
