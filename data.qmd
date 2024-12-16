@@ -7,91 +7,17 @@ draft: false
 
 ![](images/dataset-cover.png)
 
+For our study, we have sourced a dataset from the Stanford Policing Project, which supplies data on traffic stops across the country from the period of about 2005 to 2015. For this study we would like to look at areas of the country that are not a common focus of many studies, so the first part of our data will come from Rhode Island traffic stops.
 
-This comes from the file `data.qmd`.
+The data we have will focus on Rhode Island traffic stops. can be found on <https://www.kaggle.com/datasets/mustafaadelibrahim/traffic-stops-in-rhode-islandpolicing-activities?resource=download>
 
-Your first steps in this project will be to find data to work on.
+The full database, with traffic data for all states can be found on <https://openpolicing.stanford.edu/data/>
 
-I recommend trying to find data that interests you and that you are knowledgeable about. A bad example would be if you have no interest in video games but your data set is about video games. I also recommend finding data that is related to current events, social justice, and other areas that have an impact.
+The dataset has 15 variables of focus: state, stop_date, stop_time, county_name, driver_gender, driver_race, violation_description, violation, search_conducted, search_type, stop_outcome, is_arrested, stop_duration, drugs_related_stop, and district. This data set only focused on Rhode Island so the state was irrelevant. Stop_date and stop_time stated the date and time of day that the traffic stop occurred. The county_name was an empty column, so we simply removed it for our cleaned dataset. Driver_gender and driver_race detailed the gender and race of the driver who was stopped. The variable violation gave a general classification for the violation while violation_description gave a more detailed description of the reason for the traffic stop. Search_conducted (boolean), search_type, stop_outcome, is_arrested (boolean), stop_duration, drugs_related_stop (boolean) gave more details as to what occurred during the traffic stop which gives us a better idea for the severity of the traffic violation.
 
+Each row in the dataset corresponds to a particular traffic stop incident, and records data for the traffic stop according to the variables listed above. Our data cleaning, visualization, and initial analysis will be as follows:
 
-Initially, you will study _one dataset_ but later you will need to combine that data with another dataset. For this reason, I recommend finding data that has some date and/or location components. These types of data are conducive to interesting visualizations and analysis and you can also combine this data with other data that also has a date or location variable.
-Data from the census, weather data, economic data, are all relatively easy to combine with other data with time/location components.
-
-
-## What makes a good data set?
-
-* Data you are interested in and care about.
-* Data where there are a lot of potential questions that you can explore.
-* A data set that isn't completely cleaned already.
-* Multiple sources for data that you can combine.
-* Some type of time and/or location component.
-
-
-## Where to keep data?
-
-
-Below 50mb: In `dataset` folder
-
-Above 50mb: In `dataset_ignore` folder. This folder will be ignored by `git` so you'll have to manually sync these files across your team.
-
-### Sharing your data
-
-
-For small datasets (<50mb), you can use the `dataset` folder that is tracked by github. Add the files just like you would any other file.
-
-If you create a folder named `data` this will cause problems.
-
-For larger datasets, you'll need to create a new folder in the project root directory named `dataset-ignore`. This will be ignored by git (based off the `.gitignore` file in the project root directory) which will help you avoid issues with Github's size limits. Your team will have to manually make sure the data files in `dataset-ignore` are synced across team members.
-
-Your [load_and_clean_data.R](/scripts/load_and_clean_data.R) file is how you will load and clean your data. Here is a an example of a very simple one.
-
-```{r}
-source(
-  "scripts/load_and_clean_data.R",
-  echo = TRUE # Use echo=FALSE or omit it to avoid code output  
-)
-```
-You should never use absolute paths (eg. `/Users/danielsussman/path/to/project/` or `C:\MA415\\Final_Project\`).
-
-You might consider using the `here` function from the [`here` package](https://here.r-lib.org/articles/here.html) to avoid path problems.
-
-### Load and clean data script
-
-The idea behind this file is that someone coming to your website could largely replicate your analyses after running this script on the original data sets to clean them.
-This file might create a derivative data set that you then use for your subsequent analysis.
-Note that you don't need to run this script from every post/page.
-Instead, you can load in the results of this script, which could be plain text files or `.RData` files. In your data page you'll describe how these results were created. If you have a very large data set, you might save smaller data sets that you can use for exploration purposes.
-To link to this file, you can use `[cleaning script](/scripts/load_and_clean_data.R)` wich appears as [cleaning script](/scripts/load_and_clean_data.R). 
-
-----
-
-## Rubric: On this page
-
-You will
-
-* Describe where/how to find data.
-  * You must include a link to the original data source(s). Make sure to provide attribution to those who collected the data.
-  * Why was the data collected/curated? Who put it together? (This is important, if you don't know why it was collected then that might not be a good dataset to look at.
-* Describe the different data files used and what each variable means. 
-  * If you have many variables then only describe the most relevant ones and summarize the rest.
-* Describe any cleaning you had to do for your data.
-  * You *must* include a link to your `load_and_clean_data.R` file.
-  * Rrename variables and recode factors to make data more clear.
-  * Also, describe any additional R packages you used outside of those covered in class.
-  * Describe and show code for how you combined multiple data files and any cleaning that was necessary for that.
-  * Some repetition of what you do in your `load_and_clean_data.R` file is fine and encouraged if it helps explain what you did.
-* Organization, clarity, cleanliness of the page
-  * Make sure to remove excessive warnings, use clean easy-to-read code (without side scrolling), organize with sections, use bullets and other organization tools, etc.
-  * This page should be self-contained.
-  
-----Response start here----
-  
-  The dataset had 15 variables: state, stop_date, stop_time, county_name, driver_gender, driver_race, violation_description, violation, search_conducted, search_type, stop_outcome, is_arrested, stop_duration, drugs_related_stop, and district. This data set only focused on Rhode Island so the state was irrelevant. Stop_date and stop_time stated the date and time of day that the traffic stop occurred. The county_name was an empty column, so we simply removed it for our cleaned dataset. Driver_gender and driver_race detailed the gender and race of the driver who was stopped. The variable violation gave a general classification for the violation while violation_description gave a more detailed description of the reason for the traffic stop. Search_conducted (boolean), search_type, stop_outcome, is_arrested (boolean), stop_duration, drugs_related_stop (boolean) gave more details as to what occurred during the traffic stop which gives us a better idea for the severity of the traffic violation. 
-  
-  Each row in the dataset corresponds to a particular traffic stop incident, and records data for the traffic stop according to the variables listed above. Our data cleaning, visualization, and initial analysis will be as follows:
-
-To clean the dataset for analysis, our first step was to remove all rows that are missing values for our vairables of focus (the following is a chunk from load_and_clean_data.R):
+To clean the dataset for analysis, our first step was to remove all rows that are missing values for our vairables of focus (the following is a chunk from our [cleaning script](/scripts/load_and_clean_data.R)]):
 
 ```{r eval = FALSE}
 # Removing empty rows from the dataset
@@ -107,7 +33,7 @@ traffic_data %>%
   select(-state, -county_name)
 ```
 
-Next, we converted the `stop_time` variable, which was previously recorded as the number of seconds past 12:00am at which the stop occured, into a more readable format. To do this, we simpy apply a function which will convert seconds into the form hour:minute:second in military time (can also be found inload_and_clean_data.R):
+Next, we converted the `stop_time` variable, which was previously recorded as the number of seconds past 12:00am at which the stop occured, into a more readable format. To do this, we simpy apply a function which will convert seconds into the form hour:minute:second in military time (can also be found in the [cleaning script](/scripts/load_and_clean_data.R)])):
 
 ```{r eval = FALSE}
 
@@ -128,14 +54,31 @@ The following graphs and tables show a brief visual summary of the distribution 
 ```{r}
 source(
   "scripts/eda_traffic_data.R",
-  echo = F  
+  echo = F
 )
 ```
 
-First, we will visualize the distribution of key variables (e.g., 'race')
+First, we will visualize the distribution of key variables (e.g., 'race'). The plots used to visualize the data can be found in the [EDA script](scripts/eda_traffic_data.R)
+
 ```{r}
 print(plot1)
 print(plot2)
 print(plot3)
 ```
-Here, we can see stopped drivers are most frequently white, then black, then hispanic, then asian. Among each race, it seems citations are the most likeley outcome, then warning, then arrest. It seems the driver is arrested more frequently for Blacks and Hispanics then other races. In addition, the frequency of traffic stops over time seems roughly constant, with a spike around 2013.
+
+We can see from the three plots above that stopped drivers are most frequently white, then black, then hispanic, then asian. Among each race, it seems citations are the most likeley outcome, then warning, then arrest. It seems the driver is arrested more frequently for Blacks and Hispanics then other races. In addition, the frequency of traffic stops over time seems roughly constant, with a spike around 2013.
+
+```{r}
+print(plot4)
+print(plot5)
+print(plot6)
+```
+
+From the three plots above, we can see from the first that the majority demographic for each violation type is white, and speeding also appears to be the most common violation type, then moving violaitons. For the second, we see that stop duration is the shortest for Asians and other, with Black, Hispanic, and Whites slighlty longer. Finally, we note from the thrid graph that Blacks and Hispanics are searched during a stop with a slightly higher frequency than other races (we will preform proportion testing on this difference on the Analysis page)
+
+```{r}
+print(plot7)
+print(plot8)
+print(plot9)
+```
+Finally, based on our last set of plots, we can see the distribution of stop reasons being most concentrated at speeding, moving violations, and equipment violations. We can see across all races that stops are very infrequently drug-related, but most frequent for Blacks, then Hispanics, then Whites, and rarely ever for Asians or other races. Finally, the distribution for stop outcome in roughly equal across all races, while Blacks and Hisapnics are stopped slightly more frequently, and given warnings slightly more frequently than other races.

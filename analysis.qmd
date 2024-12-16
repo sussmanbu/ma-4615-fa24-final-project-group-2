@@ -5,66 +5,98 @@ toc: true
 draft: false
 ---
 
-![](https://upload.wikimedia.org/wikipedia/commons/7/77/Pebbleswithquarzite.jpg)
-
-This comes from the file `analysis.qmd`.
-
-We describe here our detailed data analysis. This page will provide an overview of what questions you addressed, illustrations of relevant aspects of the data with tables and figures, and a statistical model that attempts to answer part of the question. You'll also reflect on next steps and further analysis.
-
-The audience for this page is someone like your class mates, so you can expect that they have some level of statistical and quantitative sophistication and understand ideas like linear and logistic regression, coefficients, confidence intervals, overfitting, etc. 
-
-While the exact number of figures and tables will vary and depend on your analysis, you should target around 5 to 6. An overly long analysis could lead to losing points.
-If you want you can link back to your blog posts or create separate pages with more details.
-
-The style of this paper should aim to be that of an academic paper. 
-I don't expect this to be of publication quality but you should keep that aim in mind.
-Avoid using "we" too frequently, for example "We also found that ...". Describe your methodology and your findings but don't describe your whole process.
-
-### Example of loading data
-
-The code below shows an example of loading the loan refusal data set (which you should delete at some point).
-
-```{r}
-library(tidyverse)
-print(getwd())
-data <- read_rds(here::here("dataset/loan_refusal_clean.rds"))
-```
-
-## Note on Attribution
-
-In general, you should try to provide links to relevant resources, especially those that helped you. You don't have to link to every StackOverflow post you used but if there are explainers on aspects of the data or specific models that you found helpful, try to link to those. Also, try to link to other sources that might support (or refute) your analysis. These can just be regular hyperlinks. You don't need a formal citation.
-
-If you are directly quoting from a source, please make that clear. You can show quotes using `>` like this
-
-```         
-> To be or not to be.
-```
-
-> To be or not to be.
+![](images/mp.jpg)
 
 ------------------------------------------------------------------------
 
-## Rubric: On this page
+### Main Hypothesis Question:
 
-You will
+Is there a significant difference between the proportion of whites arrested during traffic stops and the proportion of non-whites and minorities arrested during traffic stops in: (i) Rhode Island, (ii) other US regions, (iii) across RH and other regions?
 
--   Introduce what motivates your Data Analysis (DA)
-    -   Which variables and relationships are you most interested in?
-    -   What questions are you interested in answering?
-    -   Provide context for the rest of the page. This will include figures/tables that illustrate aspects of the data of your question.
--   Modeling and Inference
-    -   The page will include some kind of formal statistical model. This could be a linear regression, logistic regression, or another modeling framework.
-    -   Explain the ideas and techniques you used to choose the predictors for your model. (Think about including interaction terms and other transformations of your variables.)
-    -   Describe the results of your modelling and make sure to give a sense of the uncertainty in your estimates and conclusions.
--   Explain the flaws and limitations of your analysis
-    -   Are there some assumptions that you needed to make that might not hold? Is there other data that would help to answer your questions?
--   Clarity Figures
-    -   Are your figures/tables/results easy to read, informative, without problems like overplotting, hard-to-read labels, etc?
-    -   Each figure should provide a key insight. Too many figures or other data summaries can detract from this. (While not a hard limit, around 5 total figures is probably a good target.)
-    -   Default `lm` output and plots are typically not acceptable.
--   Clarity of Explanations
-    -   How well do you explain each figure/result?
-    -   Do you provide interpretations that suggest further analysis or explanations for observed phenomenon?
--   Organization and cleanliness.
-    -   Make sure to remove excessive warnings, hide most or all code, organize with sections or multiple pages, use bullets, etc.
-    -   This page should be self-contained, i.e. provide a description of the relevant data.
+### Proportion testing
+
+To begin analysis, the following proportion tests were made to study the initial difference in arrest, citation, and warning rates across different races for the Rhode Island data. Testing procedures and statistics can be found in the [proportion testing script](/scripts/Proportion_testing.R)\])). One of the preconceptions considered in creating this study is that police tend to arrest Whites and Blacks at different rates due to racial prejudices. Below are the results for a test in the difference in proportion of arrests between stopped Whites and Blacks, across all reasons for stopping.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+rh_traffic_dataset_clean <- readRDS(here::here("dataset", "cleaned_dataset.rds"))
+
+arrest_rates <- rh_traffic_dataset_clean %>%
+  group_by(driver_race) %>%
+  summarize(arrest_rate = mean(is_arrested, na.rm = TRUE)) %>%
+  mutate(
+    highlight = ifelse(arrest_rate == max(arrest_rate), "Highest", "Other"),
+    driver_race = reorder(driver_race, arrest_rate) # Reorder factor levels
+  )
+
+
+ggplot(arrest_rates, aes(x = driver_race, y = arrest_rate, fill = highlight)) +
+  geom_bar(stat = "identity", show.legend = FALSE) +
+  geom_text(aes(label = scales::percent(arrest_rate, accuracy = 0.01)),
+            vjust = -0.5, size = 3) +
+  labs(
+    title = "Arrest Rate by Race",
+    subtitle = "Rhode Island Traffic Stop Data (2005-2015)",
+    x = "Race",
+    y = "Arrest Rate"
+  ) +
+  scale_y_continuous(labels = scales::percent) +
+  scale_fill_manual(values = c("Highest" = "orange", "Other" = "lightblue")) +
+  theme_minimal()
+
+```
+
+The confidence interval for the difference in proportions between Whites arrested for speeding and Blacks arrested for speeding (the most common reason for stopping across all race) is \[-0.0988, 0.13773\]. Therefore, from this test alone there is not enough evidence to conclude there is a significant difference in these proportions. It could be that there truly is no significant difference between the arrest rates or arrest practices across these two races, however, given the relatively small proportions (close to zero, and far from one half) being studied, it is possible that the standard error on the proportions is too large, so further testing is needed to study the differences and make sufficient conclusions.
+
+Within the state of Rhode Island, it is possible that policing patterns are different across geographic location. More specifically, Rhode Island is split up into 2 different police districts which may have different trends in stop frequency. Within the Stanford Policing Project dataset, the western policing district is labeled Zone K, and the eastern district zone X. Each policing district is subdivided then into numbered sub-districts, ordered from most northern to most southern.
+
+```{r}
+source(
+  "scripts/eda_traffic_data.R",
+)
+
+print(plot10)
+```
+
+The plot above indicates that while the frequency of stops is mostly the same across Zone K and Zone X, there is a pretty clear trend where minority (non-white) stops become more frequent the farther south the stops are observed. The results could potentially be multicolinear with the overall demographic distributions in these regions, however, it is also possible that there is a difference in the way drivers are policed across latitude.
+
+##Instert rh log model analysis here
+
+### San Francisco Study
+
+To better study the trends observed in the Rhode Island data, a study of traffic data from other locations may prove useful. The Stanford Policing project provides data on San Francisco which will provide a helpful perspective on Rhode Island Data, and provide the opportunity to study the difference between East-Coast and West-Coast patterns in traffic policing. 
+
+The San Francisco dataset can be found at <https://openpolicing.stanford.edu/data/>
+
+The [cleaning script](/scripts/load_and_clean_data2.R)])) will be used to merge the two datasets together. The San Francisco data is provided in similar format to the Rhode Island data, and can be used to construct the same analytical plots and models. (provide some more information on the SF dataset). Like the RH data, the SF data, and combined data can be used to construct a logistic regression model predicting the chance of being arrested across race, controlling for certain variables like stop time and date, as well as district. 
+
+Model details can be found in the [EDA script](/scripts/eda_sf_traffic.R)])).
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+
+source("scripts/eda_sf_traffic.R")
+
+broom::augment(full_model) |>
+  ggplot(aes(
+    x = as.numeric(stop_date),
+    y = as.integer(is_arrested)
+  )) +
+  geom_point(alpha = .1) +
+  geom_smooth(method = "gam", method.args = list(family = "binomial")) +
+  scale_x_log10()
+
+
+```
+
+## Full Model Summary:
+
+logit(is_arrested) = -0.869 + 1.08(is_Black) + 0.835(is_Hispanic) + 0.282(is_White) + 0.118(is_Other) + 0.439(is_Male) -0.0003(stop_date) + 0.439(district)
+
+The plot above shows us that the chance of getting arrested across the continuous predictor of stop date remains mostly consistent, and nearly zero. That is, there is no significant trend for arrest rates across time. On the other hand, we can look to the model summary to observe the significance of demographic information.
+
+The partial and full models constructed mostly corroborate the findings of the RH model. Most notably, the factors accounting for whether the driver is Black or Hispanic have estimates of 1.08 and 0.835 respectively in the full model. The estimates have p values of 2.03x10\^-203 and 1.95x10\^-110 respectively, indicating extreme statistical significance. Overall, the factor of race seemed to be the most significant predictor of one's chance of being arrested, across all models and variable selections. These give that the chance of being arrested when controlling for other factors increases by 2.94 times if the driver is black and 2.3 times if the driver is Hispanic. In other words, Black and Hispanic drivers are arrested about 50% more frequently than drivers of other races. Compared to the coefficient for whites being 0.282 with a p-value of 8x10\^-17, The other coefficients are much more statistically significant in their distance from zero.
+
+Under the null hypothesis, we would expect that the coefficients for all races are not significantly far from zero, however the model unequivocally shows that this is not the case. It is almost certain that across both Rhode Island and San Francisco, the chances that one has of being arrested when pulled over in a traffic stop is much greater if you are Black or Hispanic than if you are White. This conclusion provides evidence for a racial prejudice in the way in which traffic law enforcement is conducted, where certain races are arrested at an unjust frequency
