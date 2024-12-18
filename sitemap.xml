@@ -1,63 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/data.html</loc>
-    <lastmod>2024-12-17T21:57:40.747Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/analysis.html</loc>
-    <lastmod>2024-12-17T22:17:06.417Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/index.html</loc>
-    <lastmod>2024-10-07T14:04:29.913Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/posts/2024-11-11-fifth-post/fifth_post.html</loc>
-    <lastmod>2024-11-18T14:27:10.752Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/posts/2024-11-4-fourth-post/linear-model.html</loc>
-    <lastmod>2024-11-04T16:15:20.433Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/posts/2024-10-25-third-post/third post.html</loc>
-    <lastmod>2024-11-04T14:21:26.666Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/posts/2023-10-13-first-team-meeting/first-team-meeting.html</loc>
-    <lastmod>2024-10-07T14:04:29.913Z</lastmod>
-  </url>
-  <url>
     <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/posts/2024-12-9-seventh-post/seventhpost.html</loc>
-    <lastmod>2024-12-09T16:18:22.591Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/posts/2023-10-15-getting-started/getting-started.html</loc>
-    <lastmod>2024-10-07T14:04:29.914Z</lastmod>
+    <lastmod>2024-12-18T15:16:24.066Z</lastmod>
   </url>
   <url>
     <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/posts/2024-11-18-sixth-post/sixthpost.html</loc>
-    <lastmod>2024-11-19T00:41:20.404Z</lastmod>
+    <lastmod>2024-12-18T15:16:24.066Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/posts/2024-10-25-third-post/third post.html</loc>
+    <lastmod>2024-11-04T14:51:29.059Z</lastmod>
   </url>
   <url>
     <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/posts/2024-10-18-second-post/second post.html</loc>
-    <lastmod>2024-11-16T00:15:25.654Z</lastmod>
+    <lastmod>2024-11-11T14:18:21.526Z</lastmod>
   </url>
   <url>
-    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/posts/2024-10-24-first-post/First Post.html</loc>
-    <lastmod>2024-11-06T14:14:11.195Z</lastmod>
+    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/posts/2023-10-15-getting-started/getting-started.html</loc>
+    <lastmod>2024-10-07T13:15:26.205Z</lastmod>
   </url>
   <url>
-    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/posts/2023-12-20-examples/examples.html</loc>
-    <lastmod>2024-10-07T14:04:29.914Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/about.html</loc>
-    <lastmod>2024-10-15T13:22:55.313Z</lastmod>
+    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/index.html</loc>
+    <lastmod>2024-10-07T13:15:26.199Z</lastmod>
   </url>
   <url>
     <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/big_picture.html</loc>
-    <lastmod>2024-12-17T22:13:52.737Z</lastmod>
+    <lastmod>2024-12-18T15:16:23.974Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/about.html</loc>
+    <lastmod>2024-12-18T15:24:55.737Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/analysis.html</loc>
+    <lastmod>2024-12-18T15:30:16.468Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/data.html</loc>
+    <lastmod>2024-12-18T15:16:23.975Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/posts/2023-10-13-first-team-meeting/first-team-meeting.html</loc>
+    <lastmod>2024-10-07T13:15:26.205Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/posts/2023-12-20-examples/examples.html</loc>
+    <lastmod>2024-10-07T13:15:26.211Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/posts/2024-10-24-first-post/First Post.html</loc>
+    <lastmod>2024-11-11T14:18:21.527Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/posts/2024-11-11-fifth-post/fifth_post.html</loc>
+    <lastmod>2024-12-18T15:16:24.065Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sussmanbu.github.io/ma-4615-fa24-final-project-group-2/posts/2024-11-4-fourth-post/linear-model.html</loc>
+    <lastmod>2024-11-11T14:18:21.527Z</lastmod>
   </url>
 </urlset>
