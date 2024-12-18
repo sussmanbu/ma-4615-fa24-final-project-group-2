@@ -15,7 +15,7 @@ Is there a significant difference between the proportion of whites arrested duri
 
 ### Proportion testing
 
-To begin analysis, the following proportion tests were made to study the initial difference in arrest, citation, and warning rates across different races for the Rhode Island data. Testing procedures and statistics can be found in the [proportion testing script](/scripts/Proportion_testing.R)\])). One of the preconceptions considered in creating this study is that police tend to arrest Whites and Blacks at different rates due to racial prejudices. Below are the results for a test in the difference in proportion of arrests between stopped Whites and Blacks, across all reasons for stopping.
+To begin analysis, the following proportion tests were made to study the initial difference in arrest, citation, and warning rates across different races for the Rhode Island data. Testing procedures and statistics can be found in the [proportion testing script](/scripts/Proportion_testing.R). One of the preconceptions considered in creating this study is that police tend to arrest Whites and Blacks at different rates due to racial prejudices. Below are the results for a test in the difference in proportion of arrests between stopped Whites and Blacks, across all reasons for stopping.
 
 ```{r}
 library(ggplot2)
@@ -105,9 +105,9 @@ To better study the trends observed in the Rhode Island data, a study of traffic
 
 The San Francisco dataset can be found at <https://openpolicing.stanford.edu/data/>
 
-The [cleaning script](/scripts/load_and_clean_data2.R)\])) will be used to merge the two datasets together. The San Francisco data is provided in similar format to the Rhode Island data, and can be used to construct the same analytical plots and models. (provide some more information on the SF dataset). Like the RH data, the SF data, and combined data can be used to construct a logistic regression model predicting the chance of being arrested across race, controlling for certain variables like stop time and date, as well as district.
+The [cleaning script](/scripts/load_and_clean_data2.R)\ will be used to merge the two datasets together. The San Francisco data is provided in similar format to the Rhode Island data, and can be used to construct the same analytical plots and models. (provide some more information on the SF dataset). Like the RH data, the SF data, and combined data can be used to construct a logistic regression model predicting the chance of being arrested across race, controlling for certain variables like stop time and date, as well as district.
 
-Model details can be found in the [EDA script](/scripts/eda_sf_traffic.R)\])).
+Model details can be found in the [EDA script](/scripts/eda_sf_traffic.R)\.
 
 ```{r}
 suppressPackageStartupMessages(library(tidyverse))
